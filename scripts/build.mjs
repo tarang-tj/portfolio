@@ -2,6 +2,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { person as P, proof, cases, builds, experience } from '../src/content.mjs';
 import { visual, shot, esc } from '../src/visuals.mjs';
+import { scenes } from '../src/scenes.mjs';
 
 const root = new URL('../', import.meta.url);
 const ext = (href, text, cls = '') => `<a class="${cls}" href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
@@ -20,7 +21,7 @@ function page({ title, desc, base = '', body }) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="${base}styles.css">
-<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'))},3000)</script>
+<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'));if(!window.scenesReady)document.documentElement.classList.add('still')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,16 +37,11 @@ ${body}
   <p>${P.name} &middot; Bothell, Washington &middot; <a href="mailto:${P.email}">${P.email}</a> &middot; ${ext(P.linkedin, 'LinkedIn')} &middot; ${ext(P.github, 'GitHub')}</p>
   <p>A script checks this site&rsquo;s claims, chart bars and links before it ships: ${ext('https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs', 'read it')}.</p>
 </footer>
-<script src="${base}main.js" defer></script>
+<script src="${base}main.js" defer></script>${base ? '' : '\n<script src="scenes.js" defer></script>\n<script src="hands-on.js" defer></script>'}
 </body>
 </html>
 `;
 }
-
-const card = (c) => `<article class="case reveal">
-  <div class="case-head"><div><h3><a class="stretch" href="work/${c.slug}.html">${c.title}</a></h3><p>${c.org}, ${c.year} &middot; ${c.line}</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
-  <div class="stage">${visual(c.visual)}</div>
-</article>`;
 
 const tile = (b) => `<article class="tile reveal">
   ${b.img ? `<a href="${b.url}" target="_blank" rel="noopener noreferrer" tabindex="-1">${shot(b.img, b.url, `${b.name} home page`)}</a>` : b.visual ? visual(b.visual) : ''}
@@ -63,7 +59,7 @@ const home = page({
 </section>
 <section id="work" class="work" data-section="work">
   <h2 class="label">Selected work</h2>
-  ${cases.map(card).join('\n  ')}
+  ${scenes}
   <h2 class="label">Also built</h2>
   <div class="tiles">${builds.map(tile).join('')}</div>
 </section>

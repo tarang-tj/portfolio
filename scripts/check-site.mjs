@@ -39,8 +39,27 @@ for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.c
 }
 
 // Chart integrity: a bar's drawn width must equal value / max * 220 (the plot width), within 1px.
-const indexBars = [...read('index.html').matchAll(/<rect[^>]*data-value=/g)].length;
-if (indexBars < 12) fail(`expected 12 data bars on the home page, found ${indexBars}`);
+const home = read('index.html');
+const sceneCount = (home.match(/data-scene\b/g) || []).length;
+if (sceneCount !== cases.length) fail(`expected ${cases.length} scroll scenes on the home page, found ${sceneCount}`);
+
+// The retail scene's slider re-segments embedded per-customer data; the table printed before any
+// interaction must equal what that data gives at the default 4+ threshold.
+const distMatch = home.match(/<script type="application\/json" id="order-dist">([^<]+)<\/script>/);
+if (!distMatch) fail('order distribution missing from the retail scene');
+else {
+  const dist = JSON.parse(distMatch[1]);
+  const tot = dist.reduce((a, [, c, s]) => [a[0] + c, a[1] + s], [0, 0]);
+  if (tot[0] !== 189) fail(`order distribution has ${tot[0]} buyers, expected 189`);
+  const share = (f) => dist.filter(([n]) => f(n)).reduce((a, [, c, s]) => [a[0] + c, a[1] + s], [0, 0])
+    .map((x, i) => `${((x / tot[i]) * 100).toFixed(1)}%`);
+  const want = { b0: share((n) => n === 1)[0], r0: share((n) => n === 1)[1], b1: share((n) => n >= 2 && n < 4)[0],
+    r1: share((n) => n >= 2 && n < 4)[1], b2: share((n) => n >= 4)[0], r2: share((n) => n >= 4)[1] };
+  for (const [k, v] of Object.entries(want)) {
+    const got = (home.match(new RegExp(`data-c="${k}">([^<]+)<`)) || [])[1];
+    if (got !== v) fail(`retail table cell ${k} shows ${got}, the data gives ${v}`);
+  }
+}
 // The printed label must state the same value the bar draws.
 const bars = [...html.matchAll(/<rect[^>]*?data-value="([\d.]+)" data-max="([\d.]+)" data-shown="([^"]+)"[^>]*?\swidth="(\d+)"/g)];
 for (const [, v, max, shown, w] of bars) {

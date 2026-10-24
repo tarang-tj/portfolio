@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'))},3000)</script>
+<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'));if(!window.scenesReady)document.documentElement.classList.add('still')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -28,34 +28,90 @@
 </section>
 <section id="work" class="work" data-section="work">
   <h2 class="label">Selected work</h2>
-  <article class="case reveal">
-  <div class="case-head"><div><h3><a class="stretch" href="work/coca-cola.html">A three-day request, made self-serve</a></h3><p>The Coca-Cola Company, Summer 2026 &middot; Turning a four-person manual pull into a tool about 50 people run themselves.</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
-  <div class="stage"><div class="win dark"><div class="win-bar"><i></i><i></i><i></i><span>run log  (illustration)</span></div><div class="win-body"><pre class="log">
-<b>$</b> run brand-review
-  plan query, schema-checked   <em>ok</em>
-  compute 25 to 30M rows       <em>ok</em>
-  reconcile Excel, BI, Python  <em>ok</em>
-  reconcile one figure       <strong>HALT</strong>
-  <strong>&gt;</strong> two systems disagree
-  <strong>&gt;</strong> run stopped, mismatch reported
-<b>$</b> _</pre></div></div></div>
-</article>
-  <article class="case reveal">
-  <div class="case-head"><div><h3><a class="stretch" href="work/quadcore.html">Finding the one bug behind 70% of tickets</a></h3><p>Quadcore Innovations, 2025 to 2026 &middot; Support tickets fell from about 100 to 40 once one crash path was fixed.</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
-  <div class="stage"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>support tickets, before and after</span></div><div class="win-body"><svg class="chart" viewBox="0 0 400 76" role="img" aria-label="Support tickets fell from about 100 to 40"><text class="t" x="0" y="23">Before the fixes</text><rect class="bar alt" x="120" y="11" data-value="100" data-max="100" data-shown="~100" height="16" width="220"/><text class="v" x="348" y="23">~100</text><text class="t" x="0" y="57">After the fixes</text><rect class="bar" x="120" y="45" data-value="40" data-max="100" data-shown="40" height="16" width="88"/><text class="v" x="216" y="57">40</text></svg><p class="cap">Resolution time: 2 to 4 days before, 24 hours after.</p></div></div></div>
-</article>
-  <article class="case reveal">
-  <div class="case-head"><div><h3><a class="stretch" href="work/kalshi.html">My backtest made 7.7%. I called it luck.</a></h3><p>Independent research, 2026 &middot; A weather forecasting model scored against 4,433 prediction markets.</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
-  <div class="stage"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>kalshi-weather-engine / scoreboard</span></div><div class="win-body"><p class="nb"><span>In [12]:</span> brier(contested)</p><svg class="chart" viewBox="0 0 400 76" role="img" aria-label="Brier score on 1,216 contested markets: market 0.2114, my model 0.3047"><text class="t" x="0" y="23">Market</text><rect class="bar" x="120" y="11" data-value="0.2114" data-max="0.35" data-shown="0.2114" height="16" width="133"/><text class="v" x="261" y="23">0.2114</text><text class="t" x="0" y="57">My model</text><rect class="bar alt" x="120" y="45" data-value="0.3047" data-max="0.35" data-shown="0.3047" height="16" width="192"/><text class="v" x="320" y="57">0.3047</text></svg><p class="cap">Lower is better. n = 1,216 contested of 4,433 settled markets.</p></div></div></div>
-</article>
-  <article class="case reveal">
-  <div class="case-head"><div><h3><a class="stretch" href="work/retail-sql.html">Who actually pays the bills in an online store</a></h3><p>SQL study, 2026 &middot; A third of buyers bring in more than half the revenue.</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
-  <div class="stage"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>ecommerce-sql / query 2.4</span></div><div class="win-body"><pre class="sql"><b>CASE</b>
-  <b>WHEN</b> order_count = 1 <b>THEN</b> 'One-time buyer'
-  <b>WHEN</b> order_count <b>BETWEEN</b> 2 <b>AND</b> 3 <b>THEN</b> 'Repeat buyer'
-  <b>ELSE</b> 'Loyal customer (4+)'
-<b>END AS</b> segment</pre><p class="legend"><span><i class="alt"></i>Share of buyers</span><span><i></i>Share of revenue</span></p><svg class="chart" viewBox="0 0 400 152" role="img" aria-label="Share of buyers vs share of revenue. One-time: 19.0% vs 7.5%. Repeat: 47.6% vs 38.1%. Loyal: 33.3% vs 54.4%."><text class="t" x="0" y="23">One-time</text><rect class="bar alt" x="120" y="11" data-value="19" data-max="100" data-shown="19.0%" height="16" width="42"/><text class="v" x="170" y="23">19.0%</text><text class="t" x="0" y="47"></text><rect class="bar" x="120" y="35" data-value="7.5" data-max="100" data-shown="7.5%" height="16" width="17"/><text class="v" x="145" y="47">7.5%</text><text class="t" x="0" y="71">Repeat (2 to 3)</text><rect class="bar alt" x="120" y="59" data-value="47.6" data-max="100" data-shown="47.6%" height="16" width="105"/><text class="v" x="233" y="71">47.6%</text><text class="t" x="0" y="95"></text><rect class="bar" x="120" y="83" data-value="38.1" data-max="100" data-shown="38.1%" height="16" width="84"/><text class="v" x="212" y="95">38.1%</text><text class="t" x="0" y="119">Loyal (4+)</text><rect class="bar alt" x="120" y="107" data-value="33.3" data-max="100" data-shown="33.3%" height="16" width="73"/><text class="v" x="201" y="119">33.3%</text><text class="t" x="0" y="143"></text><rect class="bar" x="120" y="131" data-value="54.4" data-max="100" data-shown="54.4%" height="16" width="120"/><text class="v" x="248" y="143">54.4%</text></svg></div></div></div>
-</article>
+  <section class="scene" data-scene style="--len:3.2" aria-labelledby="s-coca-cola">
+  <div class="scene-pin">
+    <div class="scene-text">
+      <p class="label">01 &middot; The Coca-Cola Company, Summer 2026</p>
+      <h3 id="s-coca-cola"><a href="work/coca-cola.html">A three-day request, made self-serve</a></h3>
+      <ol class="beats"><li data-at="0">A recurring request took four people about three days to pull by hand.</li><li data-at="0.25">I built a tool that about 50 people now run themselves.</li><li data-at="0.5">Every figure is computed in plain Python over 25 to 30 million rows.</li><li data-at="0.75">When two systems disagree, it stops. Those checks caught nine mismatches.</li></ol>
+      <a class="case-link" href="work/coca-cola.html">Read the case &rarr;</a>
+    </div>
+    <div class="scene-win"><div class="win dark"><div class="win-bar"><i></i><i></i><i></i><span>run log  (illustration: the real tool is internal)</span></div><div class="win-body"><div class="log" data-log>
+    <div class="ln cmd"><span>$ run brand-review</span></div>
+    <div class="ln " data-at="0.2"><span>plan query, schema-checked</span><b>ok</b></div>
+    <div class="ln " data-at="0.4"><span>compute 25 to 30M rows</span><b>ok</b></div>
+    <div class="ln " data-at="0.55"><span>reconcile Excel vs Python</span><b>ok</b></div>
+    <div class="ln last" data-at="0.75"><span>reconcile across systems</span><b><i class="halt">HALT</i><i class="pass">ok</i></b></div>
+    <div class="ln note" data-at="0.8"><span class="halt">&gt; two systems disagree on one figure. run stopped.</span><span class="pass">&gt; all systems agree. report published.</span></div>
+  </div>
+  <div class="try"><span>Try it:</span><button type="button" data-log-mode="halt" aria-pressed="true">One system disagrees</button><button type="button" data-log-mode="pass" aria-pressed="false">All agree</button></div></div></div></div>
+  </div>
+</section>
+<section class="scene" data-scene style="--len:3" aria-labelledby="s-quadcore">
+  <div class="scene-pin">
+    <div class="scene-text">
+      <p class="label">02 &middot; Quadcore Innovations, 2025 to 2026</p>
+      <h3 id="s-quadcore"><a href="work/quadcore.html">Finding the one bug behind 70% of tickets</a></h3>
+      <ol class="beats"><li data-at="0">About 100 support tickets kept arriving on a fintech payments platform.</li><li data-at="0.3">I traced about 70% of them to a single crash path.</li><li data-at="0.6">The product lead accepted the fixes. Tickets fell to 40.</li><li data-at="0.85">Resolution time went from 2 to 4 days to 24 hours.</li></ol>
+      <a class="case-link" href="work/quadcore.html">Read the case &rarr;</a>
+    </div>
+    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>support tickets, one dot each</span></div><div class="win-body"><div class="tickets" data-tickets>
+    <p class="count"><b data-count>~100</b> tickets</p>
+    <div class="dots" role="img" aria-label="About 100 tickets, about 70 from one crash path, 40 after the fixes"><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+    <p class="key"><span><i class="crash"></i>one crash path</span><span><i></i>everything else</span></p>
+  </div>
+  <div class="try"><span>Try it:</span><button type="button" data-fix="off" aria-pressed="true">Before the fix</button><button type="button" data-fix="on" aria-pressed="false">After the fix</button></div></div></div></div>
+  </div>
+</section>
+<section class="scene" data-scene style="--len:3.2" aria-labelledby="s-kalshi">
+  <div class="scene-pin">
+    <div class="scene-text">
+      <p class="label">03 &middot; Independent research, 2026</p>
+      <h3 id="s-kalshi"><a href="work/kalshi.html">My backtest made 7.7%. I called it luck.</a></h3>
+      <ol class="beats"><li data-at="0">I built a model that prices weather markets from day-ahead forecasts.</li><li data-at="0.3">The first paper backtest made 7.7%.</li><li data-at="0.55">Then I scored calibration on 1,216 contested markets. The market won.</li><li data-at="0.85">No real money has been traded. The rule for that has not been met.</li></ol>
+      <a class="case-link" href="work/kalshi.html">Read the case &rarr;</a>
+    </div>
+    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>kalshi-weather-engine / notebook</span></div><div class="win-body"><div class="nbk">
+    <p class="cell" data-at="0.2"><span>In [1]:</span> backtest(paper=True)</p>
+    <p class="out big pos" data-at="0.3">+7.7%</p>
+    <p class="cell" data-at="0.5"><span>In [2]:</span> brier(contested)  <em># lower is better</em></p>
+    <div class="brier" data-at="0.55">
+      <div class="scale"><i class="mk" data-mk="market" style="left:21.14%"><b>market 0.2114</b></i><i class="mk alt" style="left:30.47%"><b>my model 0.3047</b></i><i class="mk you" data-you style="left:9%"><b data-you-label>you 0.0900</b></i></div>
+      <p class="ends"><span>0 perfect</span><span>1 always wrong</span></p>
+      <p class="cap">Brier = (forecast &minus; outcome)&sup2;, averaged over markets.</p>
+    </div>
+  </div>
+  <div class="try col"><span>Try Brier: you say it hits 60&deg;F tomorrow, <output data-p>70</output>% likely.</span>
+    <input type="range" min="0" max="100" value="70" data-p-in aria-label="Your forecast probability">
+    <span class="row" aria-live="polite">It <button type="button" data-y="1" aria-pressed="true">did</button><button type="button" data-y="0" aria-pressed="false">didn&rsquo;t</button> &rarr; your score is <b data-you-score>0.0900</b></span></div></div></div></div>
+  </div>
+</section>
+<section class="scene" data-scene style="--len:3.6" aria-labelledby="s-retail-sql">
+  <div class="scene-pin">
+    <div class="scene-text">
+      <p class="label">04 &middot; SQL study, 620 orders</p>
+      <h3 id="s-retail-sql"><a href="work/retail-sql.html">Who actually pays the bills in an online store</a></h3>
+      <ol class="beats"><li data-at="0">620 orders over 18 months. Who actually pays the bills?</li><li data-at="0.25">Split the 189 buyers by how often they come back.</li><li data-at="0.6">Loyal customers, four or more orders, are a third of buyers.</li><li data-at="0.8">They bring in 54.4% of the revenue.</li></ol>
+      <a class="case-link" href="work/retail-sql.html">Read the case &rarr;</a>
+    </div>
+    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>ecommerce-sql / query 2.4 (excerpt)</span></div><div class="win-body"><pre class="sql" data-type="0.1-0.5" data-sql data-tpl="CASE
+  WHEN order_count = 1 THEN 'One-time buyer'
+  WHEN order_count BETWEEN 2 AND {r} THEN 'Repeat buyer'
+  ELSE 'Loyal customer ({k}+)'
+END AS segment">CASE
+  WHEN order_count = 1 THEN 'One-time buyer'
+  WHEN order_count BETWEEN 2 AND 3 THEN 'Repeat buyer'
+  ELSE 'Loyal customer (4+)'
+END AS segment</pre>
+    <table class="res" data-at="0.55" data-seg aria-live="polite"><thead><tr><th>segment</th><th>buyers</th><th>revenue</th></tr></thead>
+      <tbody><tr><td>One-time</td><td data-c="b0">19.0%</td><td data-c="r0">7.5%</td></tr>
+      <tr><td>Repeat</td><td data-c="b1">47.6%</td><td data-c="r1">38.1%</td></tr>
+      <tr class="hi" data-at="0.6"><td data-c="name">Loyal (4+)</td><td data-c="b2">33.3%</td><td data-c="r2">54.4%</td></tr></tbody></table>
+    <div class="try"><span>Try it: loyal means</span><input type="range" min="3" max="7" value="4" data-loyal aria-label="Orders needed to count as loyal" aria-valuetext="4 or more orders"><b data-loyal-out>4+</b><span>orders</span></div>
+    <p class="cap">Buyers with at least one order that was not cancelled or refunded: 189 buyers, 577 orders.</p>
+    <script type="application/json" id="order-dist">[[1,36,7619.1],[2,53,17490.86],[3,37,21338.6],[4,25,18476.17],[5,17,15155.47],[6,12,11805.77],[7,6,6117.86],[8,2,3050.78],[9,1,906.15]]</script></div></div></div>
+  </div>
+</section>
   <h2 class="label">Also built</h2>
   <div class="tiles"><article class="tile reveal">
   <a href="https://autoappli.com" target="_blank" rel="noopener noreferrer" tabindex="-1"><div class="win shot"><div class="win-bar"><i></i><i></i><i></i><span>autoappli.com</span></div><div class="win-body"><img src="img/autoappli.webp" alt="AutoAppli home page" loading="lazy" width="1440" height="620"></div></div></a>
@@ -97,5 +153,7 @@
   <p>A script checks this site&rsquo;s claims, chart bars and links before it ships: <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">read it</a>.</p>
 </footer>
 <script src="main.js" defer></script>
+<script src="scenes.js" defer></script>
+<script src="hands-on.js" defer></script>
 </body>
 </html>

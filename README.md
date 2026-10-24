@@ -10,7 +10,7 @@ A static portfolio for data, business and product analyst roles. Each case study
 node scripts/build.mjs
 ```
 
-Every figure and line of copy lives once in `src/content.mjs`. `src/visuals.mjs` draws the windows and charts. The build writes `index.html` and `work/<slug>.html`; commit the output, Pages serves it as is.
+Every figure and line of copy lives once in `src/content.mjs`. `src/visuals.mjs` draws the windows and charts. `src/scenes.mjs` writes the home page's scroll scenes, which `scenes.js` plays as you scroll (pinned window, story beats, typing) and `hands-on.js` makes interactive: the run-log toggle, the ticket before/after, a Brier score calculator, and a loyalty slider that re-segments the real per-customer order counts. With reduced motion on, the scenes render as static, fully visible sections. The build writes `index.html` and `work/<slug>.html`; commit the output, Pages serves it as is.
 
 ## Gate
 
