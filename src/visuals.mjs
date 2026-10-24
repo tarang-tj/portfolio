@@ -34,7 +34,7 @@ const visuals = {
   reconcile one figure       <strong>HALT</strong>
   <strong>&gt;</strong> two systems disagree
   <strong>&gt;</strong> run stopped, mismatch reported
-<b>$</b> _</pre>`, 'dark'),
+<b>$</b> _</pre>`),
 
   tickets: () => frame('support tickets, before and after', bars('Support tickets fell from about 100 to 40', [
     ['Before the fixes', 100, 100, '~100', true], ['After the fixes', 40, 100, '40'],
