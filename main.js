@@ -1,24 +1,29 @@
-// Theme toggle (remembered per browser) and nav highlighting for the section in view.
+// Running header shows the section in view; exhibit bars draw in once; "Save as PDF" prints the report.
 (function () {
-  const root = document.documentElement;
-  const btn = document.getElementById('theme-btn');
-  const systemDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const current = () => root.dataset.theme || (systemDark() ? 'dark' : 'light');
+  const where = document.getElementById('where');
+  const sections = [...document.querySelectorAll('section[data-title]')];
+  document.getElementById('print-btn').addEventListener('click', () => window.print());
 
-  btn.addEventListener('click', () => {
-    const next = current() === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) { /* private mode: theme just won't persist */ }
-  });
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.exhibit').forEach((e) => e.classList.add('in'));
+    return;
+  }
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) where.textContent = 'Annual Report 2026 · ' + entry.target.dataset.title;
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach((s) => sectionObserver.observe(s));
 
-  const links = [...document.querySelectorAll('.nav a')];
-  const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  if (!('IntersectionObserver' in window) || !sections.length) return;
-  const observer = new IntersectionObserver((entries) => {
+  const barObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      links.forEach((a) => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + entry.target.id)));
+      entry.target.classList.add('in');
+      obs.unobserve(entry.target);
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach((s) => observer.observe(s));
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.exhibit').forEach((e) => barObserver.observe(e));
+
+  // Printing must show full bars even for exhibits never scrolled into view.
+  window.addEventListener('beforeprint', () => document.querySelectorAll('.exhibit').forEach((e) => e.classList.add('in')));
 })();

@@ -3,30 +3,36 @@
 import { readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const text = html.replace(/<[^>]+>/g, ' ');
 const failures = [];
 const fail = (msg) => failures.push(msg);
+// The restatement in risk 4 quotes the retired figures on purpose; everything else may not.
+const htmlUnrestated = html.replace(/<li data-restatement>[\s\S]*?<\/li>/, '');
+if (htmlUnrestated === html) fail('restatement block (li[data-restatement]) is missing');
+const text = htmlUnrestated.replace(/<[^>]+>/g, ' ');
 
 // Claim rules from TJ's resume print rules and the public-site ledger audit.
 const banned = [
   [/\b\d{3}[-. )]{1,2}\d{3}[-. ]\d{4}\b/, 'phone number (any; the site lists email only)'],
-  [/—/, 'em dash'],
+  [/&mdash;|&#8212;|&#x2014;/i, 'em dash entity'],
+  [new RegExp(String.fromCharCode(0x2014)), 'em dash'],
   [/500\+ active users/i, 'retracted SyllabusAI user count'],
   [/(?<!Major )GPA: 3\.7/, 'unlabeled GPA (must be "Major GPA: 3.7")'],
   [/SyllabusAI[^<]{0,200}\bpresent\b/i, 'SyllabusAI dated "present" (it ran Mar to Aug 2026)'],
   [/ASUWB|\$4M/, 'retired Treasurer framing'],
   [/ARIMA/, 'ARIMA (not in the Economic Pulse repo)'],
   [/ragvet/i, 'old project name'],
+  [/\b22(\.0)?%|\b34(\.0)?% of|29\.5%|33,123/, 'ecommerce figure that did not reproduce (only allowed inside the restatement)'],
+  [/per week|weekly support/i, 'ticket time unit not in the record'],
   [/\b(delve|tapestry|seamless|boasts)\b/i, 'AI-writing tell'],
 ];
 for (const [re, why] of banned) if (re.test(text)) fail(`banned: ${why}`);
-for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.com']) {
+for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.com', '54.4%', '33.3%', '0.3047', '4,433']) {
   if (!text.includes(must)) fail(`missing required text: ${must}`);
 }
 
 // Chart integrity: a bar's drawn width must equal value / max * 220 (the plot width), within 1px.
-const bars = [...html.matchAll(/<rect data-value="([\d.]+)" data-max="([\d.]+)"[^>]*width="(\d+)"/g)];
-if (bars.length < 6) fail(`expected 6 data bars, found ${bars.length}`);
+const bars = [...html.matchAll(/<rect[^>]*?data-value="([\d.]+)" data-max="([\d.]+)"[^>]*?\swidth="(\d+)"/g)];
+if (bars.length < 12) fail(`expected 12 data bars, found ${bars.length}`);
 for (const [, v, max, w] of bars) {
   const expected = (Number(v) / Number(max)) * 220;
   if (Math.abs(expected - Number(w)) > 1) fail(`bar for ${v} is ${w}px, expected ${expected.toFixed(1)}px`);
