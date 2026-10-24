@@ -1,14 +1,22 @@
 // Site gate: claim rules, chart integrity, anchors, accessibility, and (with --online) live links.
 // Run: node scripts/check-site.mjs [--online]. Exits 1 on any failure.
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 
-const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+import { cases } from '../src/content.mjs';
+
+const root = new URL('../', import.meta.url);
+const workFiles = readdirSync(new URL('work/', root)).filter((f) => f.endsWith('.html')).sort();
+const pages = ['index.html', ...workFiles.map((f) => `work/${f}`)];
+const read = (p) => readFileSync(new URL(p, root), 'utf8');
+const html = pages.map(read).join('\n');
 const failures = [];
 const fail = (msg) => failures.push(msg);
-// The restatement in risk 4 quotes the retired figures on purpose; everything else may not.
-const htmlUnrestated = html.replace(/<li data-restatement>[\s\S]*?<\/li>/, '');
-if (htmlUnrestated === html) fail('restatement block (li[data-restatement]) is missing');
-const text = htmlUnrestated.replace(/<[^>]+>/g, ' ');
+// Visible text plus the attribute text screen readers and search engines see.
+const attrs = [...html.matchAll(/\s(?:aria-label|alt|title|content)="([^"]*)"/g)].map((m) => m[1]).join(' ');
+const text = html.replace(/<[^>]+>/g, ' ') + ' ' + attrs;
+// Exactly one page per case: no orphans from renamed slugs, none missing.
+const expected = cases.map((c) => `${c.slug}.html`).sort();
+if (expected.join() !== workFiles.join()) fail(`work/ has [${workFiles}] but content.mjs expects [${expected}]; run scripts/build.mjs`);
 
 // Claim rules from TJ's resume print rules and the public-site ledger audit.
 const banned = [
@@ -21,7 +29,7 @@ const banned = [
   [/ASUWB|\$4M/, 'retired Treasurer framing'],
   [/ARIMA/, 'ARIMA (not in the Economic Pulse repo)'],
   [/ragvet/i, 'old project name'],
-  [/\b22(\.0)?%|\b34(\.0)?% of|29\.5%|33,123/, 'ecommerce figure that did not reproduce (only allowed inside the restatement)'],
+  [/\b22(\.0)?%|\b34(\.0)?% of|29\.5%|33,123/, 'ecommerce figure that did not reproduce on a rerun'],
   [/per week|weekly support/i, 'ticket time unit not in the record'],
   [/\b(delve|tapestry|seamless|boasts)\b/i, 'AI-writing tell'],
 ];
@@ -31,16 +39,31 @@ for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.c
 }
 
 // Chart integrity: a bar's drawn width must equal value / max * 220 (the plot width), within 1px.
-const bars = [...html.matchAll(/<rect[^>]*?data-value="([\d.]+)" data-max="([\d.]+)"[^>]*?\swidth="(\d+)"/g)];
-if (bars.length < 12) fail(`expected 12 data bars, found ${bars.length}`);
-for (const [, v, max, w] of bars) {
-  const expected = (Number(v) / Number(max)) * 220;
-  if (Math.abs(expected - Number(w)) > 1) fail(`bar for ${v} is ${w}px, expected ${expected.toFixed(1)}px`);
+const indexBars = [...read('index.html').matchAll(/<rect[^>]*data-value=/g)].length;
+if (indexBars < 12) fail(`expected 12 data bars on the home page, found ${indexBars}`);
+// The printed label must state the same value the bar draws.
+const bars = [...html.matchAll(/<rect[^>]*?data-value="([\d.]+)" data-max="([\d.]+)" data-shown="([^"]+)"[^>]*?\swidth="(\d+)"/g)];
+for (const [, v, max, shown, w] of bars) {
+  const px = (Number(v) / Number(max)) * 220;
+  if (Math.abs(px - Number(w)) > 1) fail(`bar for ${v} is ${w}px, expected ${px.toFixed(1)}px`);
+  if (Number(shown.replace(/[^\d.-]/g, '')) !== Number(v)) fail(`bar draws ${v} but its label says ${shown}`);
 }
+const allRects = (html.match(/<rect[^>]*data-value=/g) || []).length;
+if (allRects !== bars.length) fail(`${allRects - bars.length} data bars lack data-shown or attribute order`);
 
-// Every in-page anchor resolves, every chart has a text alternative.
-const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
-for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) if (!ids.has(id)) fail(`dead anchor #${id}`);
+// Every internal link and image resolves, every image and chart has a text alternative.
+// Anchors are checked against the ids of the page they point at, not the whole site.
+const idsOf = (url) => new Set([...readFileSync(url, 'utf8').matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+for (const page of pages) {
+  const here = new URL(page, root);
+  for (const [, ref] of read(page).matchAll(/(?:href|src)="(?!https?:|mailto:)([^"]*)"/g)) {
+    const [file, id] = ref.split('#');
+    const target = file ? new URL(file, here) : here;
+    if (!existsSync(target)) { fail(`${page}: missing file ${file}`); continue; }
+    if (id && !idsOf(target).has(id)) fail(`${page}: dead anchor ${ref}`);
+  }
+}
+for (const img of html.match(/<img [^>]*>/g) || []) if (!/alt="[^"]+"/.test(img)) fail(`img without alt: ${img}`);
 for (const svg of html.match(/<svg[^>]*>/g) || []) if (!/aria-label="[^"]+"/.test(svg)) fail('svg without aria-label');
 for (const a of html.match(/<a [^>]*target="_blank"[^>]*>/g) || []) if (!/rel="noopener noreferrer"/.test(a)) fail(`_blank link without rel: ${a}`);
 
@@ -58,4 +81,4 @@ if (process.argv.includes('--online')) {
 }
 
 if (failures.length) { console.error('FAIL\n- ' + failures.join('\n- ')); process.exit(1); }
-console.log(`PASS: claims, ${bars.length} chart bars, anchors, accessibility${process.argv.includes('--online') ? ', live links' : ''}`);
+console.log(`PASS: ${pages.length} pages, claims, ${bars.length} chart bars, anchors, accessibility${process.argv.includes('--online') ? ', live links' : ''}`);
