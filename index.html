@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TJ Jammalamadaka | Data Analyst</title>
+<meta name="description" content="TJ Jammalamadaka, UW Bothell MIS senior. Data and business analyst who builds the tools behind the numbers. Full time from June 2027.">
+<meta property="og:title" content="TJ Jammalamadaka | Data Analyst">
+<meta property="og:description" content="Analysis where code computes every number and the checks decide what ships.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f6b5f'/%3E%3Crect x='7' y='17' width='4' height='8' fill='white'/%3E%3Crect x='14' y='12' width='4' height='13' fill='white'/%3E%3Crect x='21' y='7' width='4' height='18' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">TJ Jammalamadaka</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#leadership">Leadership</a>
+      <a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">Theme</button>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <div class="eyebrow">Data and business analyst</div>
+  <h1>I build the tools behind the numbers, then check them until they hold.</h1>
+  <p class="lede">I'm a Management Information Systems senior at UW Bothell, with minors in Data Analytics and Economics. This summer at The Coca-Cola Company I built an internal analysis tool where the model plans the query and code computes every figure. I'm looking for full-time data, business and product analyst roles starting June 2027, anywhere in the U.S.</p>
+  <div class="cta">
+    <a class="btn primary" href="#work">See the work</a>
+    <a class="btn" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="btn" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="btn" href="mailto:tarangjammalamadaka9@gmail.com">Email</a>
+  </div>
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><b>25 to 30M</b><span>rows behind the Coca-Cola analysis tool</span></div>
+    <div class="stat" role="listitem"><b>50+</b><span>reconciliation checks across Excel, Power BI and Python</span></div>
+    <div class="stat" role="listitem"><b>$200K+</b><span>annual student-fund allocation I oversee as Treasurer</span></div>
+    <div class="stat" role="listitem"><b>4,433</b><span>settled markets scored against my own forecasting model</span></div>
+  </div>
+  <blockquote class="principle">"The model never computes a number. Code does, and the tests check it."<cite>How I work</cite></blockquote>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="section-note">Each case says what the question was, what I did, what the data showed, and where you can check it.</p>
+    <div class="cases">
+
+      <article class="case">
+        <div>
+          <h3>An internal analysis tool that refuses to guess</h3>
+          <p class="meta">The Coca-Cola Company, Global Human Insights &middot; Summer 2026</p>
+          <p>A recurring analytical request took a 4-person team about 3 days to pull by hand. I turned it into an internal tool used directly by about 50 people.</p>
+          <ul>
+            <li>Azure OpenAI plans the query. Deterministic Python computes every figure, over a 25 to 30M row backend.</li>
+            <li>Model output is schema validated, and 50+ reconciliation checks run across Excel, Power BI and Python. If two systems disagree, the run halts instead of printing a number.</li>
+            <li>Traced a recurring discrepancy to rounding order, then wrote the calculation standard the team adopted.</li>
+            <li>Worked five years of consumer data across 200 markets in SQL, DAX and Excel.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL Server</span><span class="tag">DAX</span><span class="tag">Power BI</span><span class="tag">Azure OpenAI</span></div>
+          <p class="meta">Internal tool. The code and data stay with the company.</p>
+        </div>
+        <div class="chart">
+          <p class="chart-title">Before and after</p>
+          <p class="chart-sub">One recurring request</p>
+          <ul class="facts-list">
+            <li><b>Before:</b> about 3 days, 4 people, by hand</li>
+            <li><b>After:</b> a self-serve tool with about 50 direct users</li>
+            <li><b>Guardrail:</b> 50+ checks, and a halt on any mismatch</li>
+          </ul>
+          <p class="chart-foot">I demoed it live at the Ignite showcase and wrote the handover documentation so it kept running after I left.</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>Who actually drives revenue in an online store</h3>
+          <p class="meta">SQL analysis &middot; PostgreSQL</p>
+          <p>A six-table e-commerce schema with 620 orders and $112,344 in sales from January 2024 to June 2025. I used cohort and window-function queries to split loyal buyers from everyone else.</p>
+          <p class="finding">Loyal buyers are 22% of the customer base and bring in 34% of the revenue. November and December 2024 alone carried 29.5% of the year's sales.</p>
+          <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Window functions</span><span class="tag">Cohorts</span></div>
+          <div class="links"><a href="https://github.com/tarang-tj/ecommerce-sql" target="_blank" rel="noopener noreferrer">Queries on GitHub</a></div>
+        </div>
+        <figure class="chart">
+          <p class="chart-title">Loyal buyers punch above their weight</p>
+          <p class="chart-sub">Share of total, loyal segment</p>
+          <svg viewBox="0 0 340 92" role="img" aria-label="Loyal buyers: 22 percent of customers, 34 percent of revenue">
+            <text class="lbl" x="0" y="26">Customers</text><rect data-value="0.22" data-max="0.40" class="bar alt" x="92" y="12" width="121" height="20" rx="3"/><text class="val" x="219" y="27">22%</text>
+            <text class="lbl" x="0" y="70">Revenue</text><rect data-value="0.34" data-max="0.40" class="bar" x="92" y="56" width="187" height="20" rx="3"/><text class="val" x="285" y="71">34%</text>
+          </svg>
+          <figcaption class="chart-foot">Source: ecommerce-sql README, 620 orders.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>Letting the scoring overrule a profitable backtest</h3>
+          <p class="meta">Forecasting model vs. prediction markets &middot; Python</p>
+          <p>I built a model that turns day-ahead temperature forecasts for 7 U.S. cities into probabilities, then compared them with Kalshi weather-market prices. The first paper backtest showed +7.7%, but the Brier score said the market was far better calibrated, so I reported the gain as luck rather than skill.</p>
+          <p class="finding">Across 4,433 settled markets, on the 1,216 markets the crowd was unsure about, the market's Brier score is 0.2114 and my model's is 0.3047. Paper ROI is -3.37% on 212 picks. The rule for real money has not been met, so none has been traded.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Probability calibration</span><span class="tag">Brier score</span><span class="tag">Backtesting</span></div>
+          <div class="links"><a href="https://github.com/tarang-tj/kalshi-weather-engine-report" target="_blank" rel="noopener noreferrer">Full write-up on GitHub</a></div>
+        </div>
+        <figure class="chart">
+          <p class="chart-title">Brier score on contested markets</p>
+          <p class="chart-sub">Lower is better &middot; n = 1,216 &middot; as of Oct 22, 2026</p>
+          <svg viewBox="0 0 340 92" role="img" aria-label="Brier score: market 0.2114, my model 0.3047. Lower is better.">
+            <text class="lbl" x="0" y="26">Market</text><rect data-value="0.2114" data-max="0.35" class="bar" x="92" y="12" width="133" height="20" rx="3"/><text class="val" x="231" y="27">0.2114</text>
+            <text class="lbl" x="0" y="70">My model</text><rect data-value="0.3047" data-max="0.35" class="bar alt" x="92" y="56" width="191" height="20" rx="3"/><text class="val" x="289" y="71">0.3047</text>
+          </svg>
+          <figcaption class="chart-foot">A model that loses to the market is still a result. The write-up covers the three bugs I found and the corrected run.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>Economic Pulse: macro trends flagged, not eyeballed</h3>
+          <p class="meta">Live dashboard &middot; Python and Streamlit</p>
+          <p>Seven live indicators pulled from the Federal Reserve's FRED API. A rolling-window linear regression flags where a trend turns, and NBER recession shading puts each turn in context.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">FRED API</span><span class="tag">Regression</span></div>
+          <div class="links"><a href="https://tarang-tj.github.io/economic-pulse-dashboard/" target="_blank" rel="noopener noreferrer">Live dashboard</a><a href="https://github.com/tarang-tj/economic-pulse-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+        </div>
+        <div>
+          <h3>Washington housing affordability study</h3>
+          <p class="meta">R and Tableau</p>
+          <p>Nine years of rental index, income, vacancy and homelessness data, cleaned and modeled in R. The output is an interactive Tableau dashboard and a written report for a non-technical audience.</p>
+          <div class="tags"><span class="tag">R</span><span class="tag">Tableau</span><span class="tag">Data cleaning</span></div>
+          <div class="links"><a href="https://tarang-tj.github.io/wa-housing-homelessness/" target="_blank" rel="noopener noreferrer">Live visualization</a><a href="https://github.com/tarang-tj/wa-housing-homelessness" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>Measuring search quality instead of trusting a demo</h3>
+          <p class="meta">ragproof &middot; open-source evaluation harness</p>
+          <p>A tool that scores how well a search system finds the right documents and how faithful its answers are. On the public BEIR SciFact benchmark, dense retrieval scores NDCG@10 of 0.720 against 0.560 for keyword search.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">pytest</span><span class="tag">Docker</span></div>
+          <div class="links"><a href="https://github.com/tarang-tj/ragproof" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+        </div>
+        <figure class="chart">
+          <p class="chart-title">Retrieval quality, NDCG@10</p>
+          <p class="chart-sub">Higher is better &middot; BEIR SciFact</p>
+          <svg viewBox="0 0 340 92" role="img" aria-label="NDCG at 10: dense retrieval 0.720, keyword search 0.560">
+            <text class="lbl" x="0" y="26">Dense</text><rect data-value="0.720" data-max="0.8" class="bar" x="92" y="12" width="198" height="20" rx="3"/><text class="val" x="296" y="27">0.720</text>
+            <text class="lbl" x="0" y="70">Keyword</text><rect data-value="0.560" data-max="0.8" class="bar alt" x="92" y="56" width="154" height="20" rx="3"/><text class="val" x="252" y="71">0.560</text>
+          </svg>
+          <figcaption class="chart-foot">Covered by 54 tests and kept green in CI.</figcaption>
+        </figure>
+      </article>
+    </div>
+
+    <h3 style="margin:40px 0 14px">More builds</h3>
+    <div class="grid">
+      <div class="mini"><h3>AutoAppli</h3><p>A job-search tracker that shows where an application pipeline is leaking. About 400 weekly users, with a scraper pulling 500+ jobs a week.</p><div class="links"><a href="https://autoappli.com" target="_blank" rel="noopener noreferrer">Live site</a></div></div>
+      <div class="mini"><h3>SyllabusAI</h3><p>A free tool that turns a syllabus into dated deadlines for Google, Apple, Outlook or .ics. Built and ran it from March to August 2026, with 1,055 tests.</p><div class="links"><a href="https://syllabusai.net" target="_blank" rel="noopener noreferrer">Live site</a></div></div>
+      <div class="mini"><h3>Pokemon TCG AI Battle Challenge</h3><p>Finished 245th of 6,807. Four changes that felt right were rejected as measured nulls over 200 to 960 games each, and an 11-point gain turned out to be a measurement artifact.</p></div>
+      <div class="mini"><h3>HackerRank Orchestrate</h3><p>14th of 1,983. I wrote the evaluation harness before the message router, and the action labels came back 30 of 30.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="section-note">Newest first.</p>
+    <div class="timeline">
+      <div class="role"><div class="when">May to Aug 2026</div><div><h3>AI MarTech Intern, Ignite Program</h3><p class="meta">The Coca-Cola Company &middot; Global Human Insights &middot; Atlanta, GA</p>
+        <ul><li>Built the internal analysis tool described above: Azure OpenAI plans, Python computes, 50+ checks guard every run.</li><li>Replaced a manual pull that took 4 people about 3 days, for about 50 direct users.</li><li>Presented to insights leads and handed the tool over with full documentation.</li></ul></div></div>
+      <div class="role"><div class="when">Oct 2025 to May 2026</div><div><h3>Operations Improvement Analyst</h3><p class="meta">Quadcore Innovations &middot; fintech payments platform</p>
+        <ul><li>Traced about 70% of support tickets to one crash path. After the fixes, tickets fell from about 100 to 40 and resolution time dropped from 2 to 4 days to 24 hours.</li><li>Replaced a manual weekly reporting cycle with automated SQL and Power BI feeds behind four Tableau dashboards.</li><li>Monthly active users grew from 400 to 550.</li></ul></div></div>
+      <div class="role"><div class="when">Aug 2021 to Sep 2024</div><div><h3>IT Business Analyst Intern, then Product Analyst Intern</h3><p class="meta">JMT Worldwide LLC</p>
+        <ul><li>Sat between business users and the dev team in Agile, translating requirements into technical specs and running recurring KPI reporting.</li><li>Ran 50 user interviews for the eMASTERS product, then wrote the PRDs, ran UAT and built Figma mockups.</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <h2>Leadership</h2>
+    <p class="section-note">Real budgets, real boards, real deadlines.</p>
+    <div class="grid">
+      <div class="mini"><h3>Treasurer, UW Bothell Club Council</h3><p class="meta">2026 to 2027</p><p>A $200K+ annual allocation across 95+ student organizations. Every request is audited in spreadsheets against published criteria and decided in front of a board. Across about 60 requests, about 20% of funds were corrected.</p></div>
+      <div class="mini"><h3>President, Delta Sigma Pi</h3><p class="meta">Apr 2025 to May 2026 &middot; Upsilon Psi chapter</p><p>Led the professional business fraternity's chapter and exec team. Named Collegiate Member of the Year 2026.</p></div>
+      <div class="mini"><h3>Principal Investigator, NASA L'SPACE NPWEE</h3><p class="meta">Fall 2026</p><p>Led a team proposal: our concept was chosen from four pitches, scoped with a five-gap analysis, and run on a kanban tracker that hit every milestone.</p></div>
+      <div class="mini"><h3>Student Ambassador, Adobe and Microsoft</h3><p class="meta">2026 to 2027</p><p>Adobe Student Ambassador, and Microsoft Copilot Student Ambassador since September 2026.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="section-note">Each one is tied to work above that you can check.</p>
+    <div class="skills">
+      <div><h3>Query and analyze</h3><p>SQL (PostgreSQL, SQL Server), Python (pandas), R, Excel</p></div>
+      <div><h3>Report and visualize</h3><p>Power BI and DAX, Tableau, Streamlit</p></div>
+      <div><h3>Model and test</h3><p>Regression, probability calibration, backtesting, pytest</p></div>
+      <div><h3>AI-assisted analysis</h3><p>Azure OpenAI, Claude API, evaluation harnesses</p></div>
+    </div>
+    <div class="facts" style="margin-top:36px">
+      <div class="mini"><h3>Education</h3><p>University of Washington Bothell<br>B.A. Business Administration, Management Information Systems<br>Minors in Data Analytics and Economics<br>Major GPA: 3.7 &middot; Dean's List 2024, 2025, 2026<br>Expected June 2027</p></div>
+      <div class="mini"><h3>Certifications</h3><p>Microsoft Certified: Power BI Data Analyst<br>Anthropic: AI Fluency</p></div>
+      <div class="mini"><h3>Awards</h3><p>First place, CED Finance Case Competition<br>Collegiate Member of the Year 2026, Delta Sigma Pi</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="section-note">Full time from June 2027. Open to relocating anywhere in the U.S., with a preference for the Pacific Northwest and the Bay Area. U.S. citizen.</p>
+    <ul class="contact-list">
+      <li><a href="mailto:tarangjammalamadaka9@gmail.com">tarangjammalamadaka9@gmail.com</a></li>
+      <li><a href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">linkedin.com/in/tarang-tj</a></li>
+      <li><a href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">github.com/tarang-tj</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Tarang (TJ) Jammalamadaka &middot; Bothell, WA &middot; Every number on this page comes from a source linked beside it or from my own work records. Updated October 2026.</div></footer>
+<script src="main.js"></script>
+</body>
+</html>
