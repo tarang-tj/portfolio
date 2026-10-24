@@ -1,6 +1,7 @@
 // Site gate: claim rules, chart integrity, anchors, accessibility, and (with --online) live links.
 // Run: node scripts/check-site.mjs [--online]. Exits 1 on any failure.
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import vm from 'node:vm';
 
 import { cases } from '../src/content.mjs';
 
@@ -43,9 +44,16 @@ const plain = text
   .replace(/&#(\d+);?/g, (_, d) => String.fromCodePoint(Number(d)))
   .replace(/&([a-z]+);?/gi, (m, n) => named[n] ?? m);
 const css = readFileSync(new URL('styles.css', root), 'utf8');
-const js = ['main.js', 'scenes.js', 'hands-on.js'].map(read).join('\n');
+const js = ['main.js', 'dots-layouts.js', 'dots-engine.js', 'story.js', 'hands-on.js'].map(read).join('\n');
+// One web font, chosen on purpose: every stylesheet link to a font host must be exactly the
+// Schibsted Grotesk css2 URL, and the stock trio from the earlier dark version stays out.
+const FONT_OK = /^https:\/\/fonts\.googleapis\.com\/css2\?family=Schibsted\+Grotesk:[^"&]*&display=swap$/;
+for (const [, href] of html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)) {
+  if (/^https?:/.test(href) && !FONT_OK.test(href)) fail(`banned: stylesheet from ${href} (only the Schibsted Grotesk font is allowed)`);
+}
 for (const [re, why] of [
-  [/@import|@font-face|fonts\.(googleapis|gstatic)/i, 'web font (the site uses the system font)'],
+  [/@import|@font-face/i, 'font loaded from CSS'],
+  [/Instrument[ +]Serif|Inter[ +]Tight|JetBrains[ +]Mono/i, 'stock display font'],
   [/text-shadow|drop-shadow|box-shadow\s*:[^;]*\b\d{2,}px/i, 'glow or heavy shadow'],
   [/text-transform\s*:\s*uppercase|small-caps/i, 'uppercase label style'],
   [/\\0*(2190|2192|2197|21d2|00b7|2022|2013|2014)\b/i, 'arrow, dash or middot escape in CSS'],
@@ -53,12 +61,33 @@ for (const [re, why] of [
 // Text that scripts write into the page is held to the same rules.
 for (const [re, why] of banned.filter(([, w]) => /tic|hook/.test(w))) if (re.test(js.replace(/=>|->/g, ''))) fail(`banned in scripts: ${why}`);
 for (const [re, why] of banned) if (re.test(plain)) fail(`banned: ${why}`);
+
+// The dots never show a count the page does not print. #dot-counts maps each count to the layout
+// that draws it; the count must appear, as a whole number, in the text of a step using that layout.
+const home = read('index.html');
+const stepText = {};
+for (const [, layout, body] of home.matchAll(/<div class="step" data-layout="([^"]+)"[^>]*>([\s\S]*?)<\/div>\s*(?=<div class="step"|<p class="ch-more")/g)) {
+  stepText[layout] = (stepText[layout] || '') + ' ' + body.replace(/<[^>]+>/g, ' ');
+}
+const countsBlock = home.match(/<script type="application\/json" id="dot-counts">([^<]+)<\/script>/);
+if (!countsBlock) fail('dot counts missing from the home page');
+else {
+  for (const [k, [v, layout]] of Object.entries(JSON.parse(countsBlock[1]))) {
+    const shown = Number.isInteger(v) ? v.toLocaleString('en-US') : String(v);
+    const re = new RegExp(`(?<![\\d.,])${shown.replace(/[.,]/g, '\\$&')}(?![\\d.,]\\d|\\d)`);
+    if (!re.test(stepText[layout] || '')) fail(`dot count ${k}=${shown} is drawn by ${layout} but not printed in that step`);
+  }
+}
+// Layout names come from running dots-layouts.js, not from reading its source.
+const sandbox = { window: {}, document: { getElementById: () => null } };
+vm.runInNewContext(read('dots-layouts.js'), sandbox);
+const layoutNames = new Set(Object.keys(sandbox.window.Dots.layouts));
+for (const [, name] of home.matchAll(/data-layout="([^"]+)"/g)) if (!layoutNames.has(name)) fail(`step uses unknown dot layout ${name}`);
 for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.com', '54.4%', '33.3%', '0.3047', '4,433']) {
   if (!text.includes(must)) fail(`missing required text: ${must}`);
 }
 
 // Chart integrity: a bar's drawn width must equal value / max * 220 (the plot width), within 1px.
-const home = read('index.html');
 const sceneCount = (home.match(/data-scene\b/g) || []).length;
 if (sceneCount !== cases.length) fail(`expected ${cases.length} scroll scenes on the home page, found ${sceneCount}`);
 

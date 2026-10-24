@@ -6,90 +6,75 @@
 <title>TJ Jammalamadaka | Data analyst</title>
 <meta name="description" content="Data and business analyst. Case studies from Coca-Cola, Quadcore and independent research. Graduating June 2027.">
 <meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800;900&display=swap">
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'));if(!window.scenesReady)document.documentElement.classList.add('still')},3000)</script>
+<script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'))},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
-  <a class="me" href="index.html">TJ Jammalamadaka</a>
+  <a class="me" href="index.html">TJ<span class="sur"> Jammalamadaka</span></a>
   <nav aria-label="Main"><a href="index.html#work" data-nav="work">Work</a><a href="index.html#about" data-nav="about">About</a><a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:tarangjammalamadaka9@gmail.com">Email</a></nav>
 </header>
+<canvas id="dots" aria-hidden="true"></canvas>
 <main id="main">
-<section class="hero">
-  <h1>Tarang (TJ) Jammalamadaka</h1>
+<section class="hero" data-layout="scatter" data-cap="">
+  <p class="hero-role">Data and business analyst</p>
+  <h1>Tarang (TJ)<br>Jammalamadaka</h1>
   <p class="intro">I&rsquo;m a data and business analyst finishing a degree in Management Information Systems at the University of Washington Bothell. This summer I was an AI MarTech Intern at The Coca-Cola Company. I graduate in June 2027 and I&rsquo;m looking for a full-time analyst role.</p>
-  <ul class="proof"><li><b>~50</b> people used the tool I built at Coca-Cola</li><li><b>100 to 40</b> support tickets after the fixes I proposed at Quadcore</li><li><b>4,433</b> weather markets scored by my forecasting model</li><li><b>14th of 1,983</b> in the HackerRank Orchestrate hackathon</li></ul>
+  <ul class="stats"><li><b>~50</b><span>people used the tool I built at Coca-Cola</span></li><li><b>100 to 40</b><span>support tickets after the fixes I proposed at Quadcore</span></li><li><b>4,433</b><span>weather markets scored by my forecasting model</span></li><li><b>14th of 1,983</b><span>in the HackerRank Orchestrate hackathon</span></li></ul>
 </section>
 <section id="work" class="work" data-section="work">
-  <h2>Work</h2>
-  <section class="scene" data-scene style="--len:3.2" aria-labelledby="s-coca-cola">
-  <div class="scene-pin">
-    <div class="scene-text">
-      <p class="kicker">The Coca-Cola Company, summer 2026</p>
-      <h3 id="s-coca-cola"><a href="work/coca-cola.html">Replacing a manual data pull at Coca-Cola</a></h3>
-      <ol class="beats"><li data-at="0">A recurring request took a four-person team about three days to pull by hand.</li><li data-at="0.25">I built an internal tool so about 50 people can run it themselves.</li><li data-at="0.5">Python computes every figure over 25 to 30 million rows, and more than 50 checks compare results across Excel, Power BI and Python.</li><li data-at="0.75">If two systems disagree, the run stops. The checks caught nine mismatches.</li></ol>
-      <a class="case-link" href="work/coca-cola.html">Full case study</a>
+  <h2 class="sec-title">Four projects, told with their own data</h2>
+  <p class="sec-sub">Most dots here stand for one real person, ticket, market or buyer from the work. The note under each picture says what one dot is.</p>
+  <div class="story"><section class="chapter" data-scene style="--hue:var(--red)" aria-labelledby="c-coca-cola">
+  <header class="ch-head"><p class="ch-org">The Coca-Cola Company, summer 2026</p><h2 id="c-coca-cola"><a href="work/coca-cola.html">Replacing a three-day manual pull</a></h2></header>
+  <div class="step" data-layout="coke-team" data-cap="Each dot is one person."><p><b class="num">4</b> people spent about <b>3 days</b> pulling the same recurring request by hand.</p></div>
+  <div class="step" data-layout="coke-users" data-cap="Each dot is one person."><p>I interviewed 10 of the people who relied on it and built an internal tool. About <b class="num">50</b> people could then run it themselves.</p></div>
+  <div class="step" data-layout="coke-users" data-cap="Each dot is one person."><p>Azure OpenAI plans each query. Plain Python computes every figure over <b>25 to 30 million</b> rows.</p></div>
+  <div class="step" data-layout="coke-checks" data-cap="Each dot is one person or one caught mismatch."><p>More than 50 checks compare results across Excel, Power BI and Python. If two systems disagree, the run stops. The checks caught <b class="num">9</b> mismatches.</p>
+    <div class="win "><div class="win-bar"><i></i><i></i><i></i><span>run log (illustration: the real tool is internal)</span></div><div class="win-body"><div class="log" data-log>
+      <div class="ln cmd"><span>$ run brand-review</span></div>
+      <div class="ln "><span>plan query, schema-checked</span><b>ok</b></div>
+      <div class="ln "><span>compute 25 to 30M rows</span><b>ok</b></div>
+      <div class="ln "><span>reconcile Excel vs Python</span><b>ok</b></div>
+      <div class="ln last"><span>reconcile across systems</span><b><i class="halt">HALT</i><i class="pass">ok</i></b></div>
+      <div class="ln note"><span class="halt">&gt; two systems disagree on one figure. run stopped.</span><span class="pass">&gt; all systems agree. report published.</span></div>
     </div>
-    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>run log  (illustration: the real tool is internal)</span></div><div class="win-body"><div class="log" data-log>
-    <div class="ln cmd"><span>$ run brand-review</span></div>
-    <div class="ln " data-at="0.2"><span>plan query, schema-checked</span><b>ok</b></div>
-    <div class="ln " data-at="0.4"><span>compute 25 to 30M rows</span><b>ok</b></div>
-    <div class="ln " data-at="0.55"><span>reconcile Excel vs Python</span><b>ok</b></div>
-    <div class="ln last" data-at="0.75"><span>reconcile across systems</span><b><i class="halt">HALT</i><i class="pass">ok</i></b></div>
-    <div class="ln note" data-at="0.8"><span class="halt">&gt; two systems disagree on one figure. run stopped.</span><span class="pass">&gt; all systems agree. report published.</span></div>
-  </div>
-  <div class="try" role="group" aria-labelledby="lbl-log"><span id="lbl-log">Show a run where the systems</span><button type="button" data-log-mode="halt" aria-pressed="true">disagree</button><button type="button" data-log-mode="pass" aria-pressed="false">agree</button></div></div></div></div>
-  </div>
+    <div class="try" role="group" aria-labelledby="lbl-log"><span id="lbl-log">Show a run where the systems</span><button type="button" data-log-mode="halt" aria-pressed="true">disagree</button><button type="button" data-log-mode="pass" aria-pressed="false">agree</button></div></div></div></div>
+  <p class="ch-more"><a href="work/coca-cola.html">Read the full case study</a></p>
 </section>
-<section class="scene" data-scene style="--len:3" aria-labelledby="s-quadcore">
-  <div class="scene-pin">
-    <div class="scene-text">
-      <p class="kicker">Quadcore Innovations, Oct 2025 to May 2026</p>
-      <h3 id="s-quadcore"><a href="work/quadcore.html">Cutting support tickets at Quadcore</a></h3>
-      <ol class="beats"><li data-at="0">The payments platform was getting about 100 support tickets.</li><li data-at="0.3">I traced about 70% of them to one crash path.</li><li data-at="0.6">The product lead accepted the fixes I proposed, and tickets dropped to about 40.</li><li data-at="0.85">Resolution time went from 2 to 4 days to 24 hours.</li></ol>
-      <a class="case-link" href="work/quadcore.html">Full case study</a>
-    </div>
-    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>support tickets, one dot each</span></div><div class="win-body"><div class="tickets" data-tickets>
-    <p class="count"><b data-count>~100</b> tickets</p>
-    <div class="dots" role="img" aria-label="About 100 tickets, about 70 from one crash path, 40 after the fixes"><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class="crash gone"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
-    <p class="key"><span><i class="crash"></i>one crash path</span><span><i></i>everything else</span></p>
-  </div>
-  <div class="try" role="group" aria-labelledby="lbl-fix"><span id="lbl-fix">Show tickets</span><button type="button" data-fix="off" aria-pressed="true">before the fixes</button><button type="button" data-fix="on" aria-pressed="false">after the fixes</button></div></div></div></div>
-  </div>
+<section class="chapter" data-scene style="--hue:var(--blue)" aria-labelledby="c-quadcore">
+  <header class="ch-head"><p class="ch-org">Quadcore Innovations, Oct 2025 to May 2026</p><h2 id="c-quadcore"><a href="work/quadcore.html">Cutting support tickets on a payments platform</a></h2></header>
+  <div class="step" data-layout="quad-100" data-cap="Each dot is one support ticket."><p>The platform was getting about <b class="num">100</b> support tickets.</p></div>
+  <div class="step" data-layout="quad-70" data-cap="Each dot is one support ticket."><p>I mapped the platform with the people who run it and traced about <b class="num">70%</b> of the tickets to one crash path.</p></div>
+  <div class="step" data-layout="quad-40" data-cap="Each dot is one support ticket."><p>The product lead accepted the fixes I proposed. Tickets dropped to about <b class="num">40</b>, and resolution time went from 2 to 4 days to 24 hours.</p>
+    <div class="try" role="group" aria-labelledby="lbl-fix"><span id="lbl-fix">Show tickets</span><button type="button" data-fix="off" aria-pressed="false">before the fixes</button><button type="button" data-fix="on" aria-pressed="true">after the fixes</button></div></div>
+  <p class="ch-more"><a href="work/quadcore.html">Read the full case study</a></p>
 </section>
-<section class="scene" data-scene style="--len:3.2" aria-labelledby="s-kalshi">
-  <div class="scene-pin">
-    <div class="scene-text">
-      <p class="kicker">Independent project, 2026</p>
-      <h3 id="s-kalshi"><a href="work/kalshi.html">Forecasting weather prediction markets</a></h3>
-      <ol class="beats"><li data-at="0">My model turns day-ahead temperature forecasts for 7 U.S. cities into probabilities and compares them with Kalshi prices.</li><li data-at="0.3">The first paper backtest returned 7.7%.</li><li data-at="0.55">On the 1,216 contested markets, the market was better calibrated than my model (Brier 0.2114 vs 0.3047).</li><li data-at="0.85">I have not traded real money. My rule needs a better Brier score than the market on 200+ contested markets and a positive paper return, and neither is true yet.</li></ol>
-      <a class="case-link" href="work/kalshi.html">Full case study</a>
-    </div>
-    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>kalshi-weather-engine / notebook</span></div><div class="win-body"><div class="nbk">
-    <p class="cell" data-at="0.2"><span>In [1]:</span> backtest(paper=True)</p>
-    <p class="out big pos" data-at="0.3">+7.7%</p>
-    <p class="cell" data-at="0.5"><span>In [2]:</span> brier(contested)  <em># lower is better</em></p>
-    <div class="brier" data-at="0.55">
-      <div class="scale"><i class="mk" data-mk="market" style="left:21.14%"><b>market 0.2114</b></i><i class="mk alt" style="left:30.47%"><b>my model 0.3047</b></i><i class="mk you" data-you style="left:9%"><b data-you-label>you 0.0900</b></i></div>
+<section class="chapter" data-scene style="--hue:var(--gold)" aria-labelledby="c-kalshi">
+  <header class="ch-head"><p class="ch-org">Independent research, 2026</p><h2 id="c-kalshi"><a href="work/kalshi.html">Testing a forecasting model against prediction markets</a></h2></header>
+  <div class="step" data-layout="kal-all" data-cap="Each dot is one settled market."><p>My model turns day-ahead temperature forecasts for 7 U.S. cities into probabilities and compares them with Kalshi prices. It has scored <b class="num">4,433</b> settled markets.</p></div>
+  <div class="step" data-layout="kal-all" data-cap="Each dot is one settled market."><p>The first paper backtest returned <b class="num">+7.7%</b>. The calibration check further down is why I did not rely on it.</p></div>
+  <div class="step" data-layout="kal-contested" data-cap="Each dot is one settled market."><p><b class="num">1,216</b> of them were contested, where the market itself was unsure.</p></div>
+  <div class="step" data-layout="kal-brier" data-cap="Each dot is 0.001 of Brier score."><p>On those, the market&rsquo;s Brier score is <b>0.2114</b> and mine is <b>0.3047</b>. Lower is better, so the market wins.</p></div>
+  <div class="step" data-layout="kal-brier" data-cap="Each dot is 0.001 of Brier score."><p>I have not traded real money. My rule needs a better Brier score than the market on 200+ contested markets and a positive paper return. Neither is true yet: paper return is -3.37% on 212 picks.</p>
+    <div class="win "><div class="win-bar"><i></i><i></i><i></i><span>brier score calculator</span></div><div class="win-body"><div class="brier">
+      <div class="scale"><i class="mk" style="left:21.14%"><b>market 0.2114</b></i><i class="mk alt" style="left:30.47%"><b>my model 0.3047</b></i><i class="mk you" data-you style="left:9%"><b data-you-label>you 0.0900</b></i></div>
       <p class="ends"><span>0 perfect</span><span>1 always wrong</span></p>
-      <p class="cap">Brier = (forecast &minus; outcome)&sup2;, averaged over markets.</p>
     </div>
-  </div>
-  <div class="try col"><span>Your forecast: <output data-p>70</output>% chance of 60&deg;F or warmer</span>
-    <input type="range" min="0" max="100" value="70" data-p-in aria-label="Your forecast probability">
-    <span class="row" role="group" aria-labelledby="lbl-y" aria-live="polite"><span id="lbl-y">Outcome:</span> <button type="button" data-y="1" aria-pressed="true">it did</button><button type="button" data-y="0" aria-pressed="false">it didn&rsquo;t</button> Your Brier score: <b data-you-score>0.0900</b></span></div></div></div></div>
-  </div>
+    <div class="try col"><span>Your forecast: <output data-p>70</output>% chance of 60&deg;F or warmer</span>
+      <input type="range" min="0" max="100" value="70" data-p-in aria-label="Your forecast probability">
+      <span class="row" role="group" aria-labelledby="lbl-y"><span id="lbl-y">Outcome:</span> <button type="button" data-y="1" aria-pressed="true">it did</button><button type="button" data-y="0" aria-pressed="false">it didn&rsquo;t</button> Your score: <b data-you-score aria-live="polite">0.0900</b></span></div></div></div></div>
+  <p class="ch-more"><a href="work/kalshi.html">Read the full case study</a></p>
 </section>
-<section class="scene" data-scene style="--len:3.6" aria-labelledby="s-retail-sql">
-  <div class="scene-pin">
-    <div class="scene-text">
-      <p class="kicker">SQL project, 2026</p>
-      <h3 id="s-retail-sql"><a href="work/retail-sql.html">Segmenting online store customers in SQL</a></h3>
-      <ol class="beats"><li data-at="0">A retail database with 620 orders from January 2024 to June 2025.</li><li data-at="0.25">I grouped the 189 buyers by how many orders they placed.</li><li data-at="0.6">Customers with four or more orders are a third of buyers.</li><li data-at="0.8">They account for 54.4% of revenue.</li></ol>
-      <a class="case-link" href="work/retail-sql.html">Full case study</a>
-    </div>
-    <div class="scene-win"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>ecommerce-sql / query 2.4 (excerpt)</span></div><div class="win-body"><pre class="sql" data-type="0.1-0.5" data-sql data-tpl="CASE
+<section class="chapter" data-scene style="--hue:var(--green)" aria-labelledby="c-retail-sql">
+  <header class="ch-head"><p class="ch-org">SQL project, 2026</p><h2 id="c-retail-sql"><a href="work/retail-sql.html">Finding who pays the bills in an online store</a></h2></header>
+  <div class="step" data-layout="ret-buyers" data-cap="Each dot is one buyer."><p>A retail database with 620 orders from January 2024 to June 2025. <b class="num">189</b> buyers placed at least one order that was not cancelled or refunded.</p></div>
+  <div class="step" data-layout="ret-groups" data-cap="Each dot is one buyer."><p>I grouped them by how many orders they placed: 36 bought once, 90 came back two or three times, and 63 placed four or more. That last group is a third of buyers.</p>
+    <div class="win "><div class="win-bar"><i></i><i></i><i></i><span>ecommerce-sql / query 2.4 (excerpt)</span></div><div class="win-body"><pre class="sql" data-sql data-tpl="CASE
   WHEN order_count = 1 THEN 'One-time buyer'
   WHEN order_count BETWEEN 2 AND {r} THEN 'Repeat buyer'
   ELSE 'Loyal customer ({k}+)'
@@ -97,17 +82,21 @@ END AS segment">CASE
   WHEN order_count = 1 THEN 'One-time buyer'
   WHEN order_count BETWEEN 2 AND 3 THEN 'Repeat buyer'
   ELSE 'Loyal customer (4+)'
-END AS segment</pre>
-    <table class="res" data-at="0.55" data-seg aria-live="polite"><thead><tr><th>segment</th><th>buyers</th><th>revenue</th></tr></thead>
+END AS segment</pre></div></div></div>
+  <div class="step" data-layout="ret-revenue" data-cap="Each square is 1% of revenue, rounded."><p>They bring in <b class="num">54.4%</b> of revenue.</p></div>
+  <div class="step" data-layout="ret-live" data-cap="Each dot is one buyer."><p>Move the line for who counts as loyal. The dots regroup from the real order counts.</p>
+    <div class="win "><div class="win-bar"><i></i><i></i><i></i><span>segments</span></div><div class="win-body"><table class="res" data-seg><thead><tr><th>segment</th><th>buyers</th><th>revenue</th></tr></thead>
       <tbody><tr><td>One-time</td><td data-c="b0">19.0%</td><td data-c="r0">7.5%</td></tr>
       <tr><td>Repeat</td><td data-c="b1">47.6%</td><td data-c="r1">38.1%</td></tr>
-      <tr class="hi" data-at="0.6"><td data-c="name">Loyal (4+)</td><td data-c="b2">33.3%</td><td data-c="r2">54.4%</td></tr></tbody></table>
-    <div class="try"><span>Count as loyal at</span><input type="range" min="3" max="7" value="4" data-loyal aria-label="Orders needed to count as loyal" aria-valuetext="4 or more orders"><b data-loyal-out>4+</b><span>orders</span></div>
-    <p class="cap">Buyers with at least one order that was not cancelled or refunded: 189 buyers, 577 orders.</p>
-    <script type="application/json" id="order-dist">[[1,36,7619.1],[2,53,17490.86],[3,37,21338.6],[4,25,18476.17],[5,17,15155.47],[6,12,11805.77],[7,6,6117.86],[8,2,3050.78],[9,1,906.15]]</script></div></div></div>
-  </div>
+      <tr class="hi"><td data-c="name">Loyal (4+)</td><td data-c="b2">33.3%</td><td data-c="r2">54.4%</td></tr></tbody></table>
+    <div class="try"><label for="loyal">Count as loyal at</label><input id="loyal" type="range" min="3" max="7" value="4" data-loyal aria-valuetext="4 or more orders"><b data-loyal-out>4+</b><span>orders</span></div></div></div></div>
+  <p class="ch-more"><a href="work/retail-sql.html">Read the full case study</a></p>
 </section>
-  <h2>Other projects</h2>
+<script type="application/json" id="order-dist">[[1,36,7619.1],[2,53,17490.86],[3,37,21338.6],[4,25,18476.17],[5,17,15155.47],[6,12,11805.77],[7,6,6117.86],[8,2,3050.78],[9,1,906.15]]</script>
+<script type="application/json" id="dot-counts">{"team":[4,"coke-team"],"users":[50,"coke-users"],"mismatches":[9,"coke-checks"],"tickets":[100,"quad-100"],"crash":[70,"quad-70"],"after":[40,"quad-40"],"markets":[4433,"kal-all"],"contested":[1216,"kal-contested"],"brierMarket":[0.2114,"kal-brier"],"brierModel":[0.3047,"kal-brier"],"buyers":[189,"ret-buyers"],"oneTime":[36,"ret-groups"],"repeat":[90,"ret-groups"],"loyal":[63,"ret-groups"]}</script></div>
+</section>
+<section class="others" data-layout="none" data-cap="">
+  <h2 class="sec-title">Other projects</h2>
   <div class="tiles"><article class="tile reveal">
   
   <h3><a class="" href="https://autoappli.com" target="_blank" rel="noopener noreferrer">AutoAppli</a></h3><p>A job-search tracker that shows where an application pipeline is leaking. About 400 weekly users.</p>
@@ -125,7 +114,7 @@ END AS segment</pre>
   <h3><a class="" href="https://tarang-tj.github.io/wa-housing-homelessness/" target="_blank" rel="noopener noreferrer">Washington housing</a></h3><p>Nine years of rent, income, vacancy and homelessness data, modeled in R and published in Tableau.</p><p class="links"><a class="" href="https://github.com/tarang-tj/wa-housing-homelessness" target="_blank" rel="noopener noreferrer">Code</a></p>
 </article></div>
 </section>
-<section id="about" class="about" data-section="about">
+<section id="about" class="about" data-section="about" data-layout="none" data-cap="">
   <h2>About</h2>
   <div class="about-grid">
     <div class="bio"><p>I study Management Information Systems at the University of Washington Bothell, with minors in Data Analytics and Economics. Major GPA: 3.7, Dean&rsquo;s List 2024, 2025 and 2026. I graduate in June 2027.</p>
@@ -147,7 +136,9 @@ END AS segment</pre>
   <p>A <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">script</a> in the repo checks the numbers on this site against their sources.</p>
 </footer>
 <script src="main.js" defer></script>
-<script src="scenes.js" defer></script>
+<script src="dots-layouts.js" defer></script>
+<script src="dots-engine.js" defer></script>
+<script src="story.js" defer></script>
 <script src="hands-on.js" defer></script>
 </body>
 </html>
