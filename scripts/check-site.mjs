@@ -13,7 +13,7 @@ const failures = [];
 const fail = (msg) => failures.push(msg);
 // Visible text plus the attribute text screen readers and search engines see.
 const attrs = [...html.matchAll(/\s(?:aria-label|alt|title|content)="([^"]*)"/g)].map((m) => m[1]).join(' ');
-const text = html.replace(/<[^>]+>/g, ' ') + ' ' + attrs;
+const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ') + ' ' + attrs;
 // Exactly one page per case: no orphans from renamed slugs, none missing.
 const expected = cases.map((c) => `${c.slug}.html`).sort();
 if (expected.join() !== workFiles.join()) fail(`work/ has [${workFiles}] but content.mjs expects [${expected}]; run scripts/build.mjs`);
@@ -32,8 +32,27 @@ const banned = [
   [/\b22(\.0)?%|\b34(\.0)?% of|29\.5%|33,123/, 'ecommerce figure that did not reproduce on a rerun'],
   [/per week|weekly support/i, 'ticket time unit not in the record'],
   [/\b(delve|tapestry|seamless|boasts)\b/i, 'AI-writing tell'],
+  // TJ asked for the "Claude formatting" to go: no arrow or middot tics, no stock hooks or display fonts.
+  // Matched against `plain` (entities decoded) below, so &#8594; and &rarr; count the same as the character.
+  [/[–—·•∙←-⇿➔-➿⟵-⟿]|->|=>/, 'arrow, dash or middot tic'],
+  [/\bTry it\b|Read the case|I called it luck|messy data into/i, 'stock hook or label'],
 ];
-for (const [re, why] of banned) if (re.test(text)) fail(`banned: ${why}`);
+const named = { rarr: '→', larr: '←', rArr: '⇒', harr: '↔', middot: '·', bull: '•', ndash: '–', mdash: '—' };
+const plain = text
+  .replace(/&#x([0-9a-f]+);?/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);?/g, (_, d) => String.fromCodePoint(Number(d)))
+  .replace(/&([a-z]+);?/gi, (m, n) => named[n] ?? m);
+const css = readFileSync(new URL('styles.css', root), 'utf8');
+const js = ['main.js', 'scenes.js', 'hands-on.js'].map(read).join('\n');
+for (const [re, why] of [
+  [/@import|@font-face|fonts\.(googleapis|gstatic)/i, 'web font (the site uses the system font)'],
+  [/text-shadow|drop-shadow|box-shadow\s*:[^;]*\b\d{2,}px/i, 'glow or heavy shadow'],
+  [/text-transform\s*:\s*uppercase|small-caps/i, 'uppercase label style'],
+  [/\\0*(2190|2192|2197|21d2|00b7|2022|2013|2014)\b/i, 'arrow, dash or middot escape in CSS'],
+]) if (re.test(css + html)) fail(`banned: ${why}`);
+// Text that scripts write into the page is held to the same rules.
+for (const [re, why] of banned.filter(([, w]) => /tic|hook/.test(w))) if (re.test(js.replace(/=>|->/g, ''))) fail(`banned in scripts: ${why}`);
+for (const [re, why] of banned) if (re.test(plain)) fail(`banned: ${why}`);
 for (const must of ['Major GPA: 3.7', 'June 2027', 'tarangjammalamadaka9@gmail.com', '54.4%', '33.3%', '0.3047', '4,433']) {
   if (!text.includes(must)) fail(`missing required text: ${must}`);
 }

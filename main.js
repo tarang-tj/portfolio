@@ -1,4 +1,4 @@
-// Cards fade up and their bars draw once in view; the Work/About pill follows the section on screen.
+// Tiles and case-page charts appear once in view; the Work/About nav link follows the section on screen.
 (function () {
   const targets = document.querySelectorAll('.reveal, .stage');
   const show = (el) => el.classList.add('in');

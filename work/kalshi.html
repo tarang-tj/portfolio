@@ -3,42 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My backtest made 7.7%. I called it luck. | TJ Jammalamadaka</title>
-<meta name="description" content="A weather forecasting model scored against 4,433 prediction markets.">
-<meta name="color-scheme" content="dark">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&display=swap">
+<title>Forecasting weather prediction markets | TJ Jammalamadaka</title>
+<meta name="description" content="A temperature forecasting model scored against 4,433 Kalshi markets.">
+<meta name="color-scheme" content="light">
 <link rel="stylesheet" href="../styles.css">
 <script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'));if(!window.scenesReady)document.documentElement.classList.add('still')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
-  <a class="me" href="../index.html"><b>TJ Jammalamadaka</b><span>Data analyst</span></a>
-  <nav class="pill" aria-label="Sections"><a href="../index.html#work" data-nav="work">Work</a><a href="../index.html#about" data-nav="about">About</a></nav>
-  <div class="out"><a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:tarangjammalamadaka9@gmail.com">Email</a></div>
+  <a class="me" href="../index.html">TJ Jammalamadaka</a>
+  <nav aria-label="Main"><a href="../index.html#work" data-nav="work">Work</a><a href="../index.html#about" data-nav="about">About</a><a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:tarangjammalamadaka9@gmail.com">Email</a></nav>
 </header>
 <main id="main">
 <article class="cs">
-  <a class="back" href="../index.html#work">&larr; All work</a>
-  <header class="cs-head"><p class="label">Independent research &middot; 2026</p><h1>My backtest made 7.7%. I called it luck.</h1><p class="dim">A weather forecasting model scored against 4,433 prediction markets.</p></header>
+  <a class="back" href="../index.html#work">Back to all work</a>
+  <header class="cs-head"><p class="kicker">Independent research, 2026</p><h1>Forecasting weather prediction markets</h1><p class="dim">A temperature forecasting model scored against 4,433 Kalshi markets.</p></header>
   <div class="stage"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>kalshi-weather-engine / scoreboard</span></div><div class="win-body"><p class="nb"><span>In [12]:</span> brier(contested)</p><svg class="chart" viewBox="0 0 400 76" role="img" aria-label="Brier score on 1,216 contested markets: market 0.2114, my model 0.3047"><text class="t" x="0" y="23">Market</text><rect class="bar" x="120" y="11" data-value="0.2114" data-max="0.35" data-shown="0.2114" height="16" width="133"/><text class="v" x="261" y="23">0.2114</text><text class="t" x="0" y="57">My model</text><rect class="bar alt" x="120" y="45" data-value="0.3047" data-max="0.35" data-shown="0.3047" height="16" width="192"/><text class="v" x="320" y="57">0.3047</text></svg><p class="cap">Lower is better. n = 1,216 contested of 4,433 settled markets.</p></div></div></div>
   <div class="cs-grid">
     <dl class="meta"><dt>My role</dt><dd>Sole author</dd><dt>Context</dt><dd>Python, Kalshi market data</dd><dt>Timeline</dt><dd>Scoreboard as of Oct 22, 2026</dd><dt>Tools</dt><dd>Python, pandas</dd></dl>
-    <div class="cs-body"><p>The model turns day-ahead temperature forecasts for 7 U.S. cities into probabilities and compares them with Kalshi market prices.</p><p>The first paper backtest made 7.7%. The Brier score, which measures calibration, said the market was far better, so I treated the gain as luck and kept testing.</p>
-      <div class="finding"><p class="label">What I found</p><p>Across 4,433 settled markets, on the 1,216 where the market was genuinely unsure, the market scores 0.2114 and my model scores 0.3047. Paper return is -3.37% on 212 picks. My rule for real money has not been met, so none has been traded.</p></div>
+    <div class="cs-body"><p>The model turns day-ahead temperature forecasts for 7 U.S. cities into probabilities and compares them with Kalshi market prices.</p><p>The first paper backtest returned 7.7%. The Brier score, which measures calibration, showed the market was much better, so I did not treat the return as evidence the model works.</p>
+      <h2 class="h-find">What I found</h2><p>Across 4,433 settled markets, on the 1,216 where the market was unsure, the market scores 0.2114 and my model scores 0.3047. Paper return is -3.37% on 212 picks. My rule for real money has not been met, so none has been traded.</p>
       <table class="figs"><tbody><tr><th scope="row">Settled markets scored</th><td>4,433</td></tr><tr><th scope="row">Contested markets</th><td>1,216</td></tr><tr><th scope="row">Brier, market</th><td>0.2114</td></tr><tr><th scope="row">Brier, my model</th><td>0.3047</td></tr><tr><th scope="row">Paper return</th><td>-3.37% on 212 picks</td></tr></tbody></table>
       <p class="dim small">Lower Brier is better. Full write-up and code are public.</p>
       <p class="links"><a class="" href="https://github.com/tarang-tj/kalshi-weather-engine-report" target="_blank" rel="noopener noreferrer">Full write-up</a></p>
     </div>
   </div>
-  <a class="next" href="retail-sql.html"><span class="label">Next</span>Who actually pays the bills in an online store &rarr;</a>
+  <p class="next">Next case study: <a href="retail-sql.html">Segmenting online store customers in SQL</a></p>
 </article>
 </main>
 <footer class="foot">
-  <p>Tarang (TJ) Jammalamadaka &middot; Bothell, Washington &middot; <a href="mailto:tarangjammalamadaka9@gmail.com">tarangjammalamadaka9@gmail.com</a> &middot; <a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-  <p>A script checks this site&rsquo;s claims, chart bars and links before it ships: <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">read it</a>.</p>
+  <p>Tarang (TJ) Jammalamadaka, Bothell, Washington. <a href="mailto:tarangjammalamadaka9@gmail.com">tarangjammalamadaka9@gmail.com</a>, <a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+  <p>A <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">script</a> in the repo checks the numbers on this site against their sources.</p>
 </footer>
 <script src="../main.js" defer></script>
 </body>

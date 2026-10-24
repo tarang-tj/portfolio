@@ -10,14 +10,14 @@ export const orderDist = [[1, 36, 7619.1], [2, 53, 17490.86], [3, 37, 21338.6], 
 
 const beats = (list) => `<ol class="beats">${list.map(([at, t]) => `<li data-at="${at}">${t}</li>`).join('')}</ol>`;
 
-function scene({ n, slug, kicker, title, len, story, win }) {
+function scene({ slug, kicker, title, len, story, win }) {
   return `<section class="scene" data-scene style="--len:${len}" aria-labelledby="s-${slug}">
   <div class="scene-pin">
     <div class="scene-text">
-      <p class="label">${n} &middot; ${kicker}</p>
+      <p class="kicker">${kicker}</p>
       <h3 id="s-${slug}"><a href="work/${slug}.html">${title}</a></h3>
       ${beats(story)}
-      <a class="case-link" href="work/${slug}.html">Read the case &rarr;</a>
+      <a class="case-link" href="work/${slug}.html">Full case study</a>
     </div>
     <div class="scene-win">${win}</div>
   </div>
@@ -27,12 +27,12 @@ function scene({ n, slug, kicker, title, len, story, win }) {
 const logLine = (at, cls, text, status) => `<div class="ln ${cls}" data-at="${at}"><span>${text}</span><b>${status}</b></div>`;
 
 const coke = scene({
-  n: '01', slug: 'coca-cola', kicker: 'The Coca-Cola Company, Summer 2026', len: 3.2,
-  title: 'A three-day request, made self-serve',
-  story: [[0, 'A recurring request took four people about three days to pull by hand.'],
-    [0.25, 'I built a tool that about 50 people now run themselves.'],
-    [0.5, 'Every figure is computed in plain Python over 25 to 30 million rows.'],
-    [0.75, 'When two systems disagree, it stops. Those checks caught nine mismatches.']],
+  slug: 'coca-cola', kicker: 'The Coca-Cola Company, summer 2026', len: 3.2,
+  title: 'Replacing a manual data pull at Coca-Cola',
+  story: [[0, 'A recurring request took a four-person team about three days to pull by hand.'],
+    [0.25, 'I built an internal tool so about 50 people can run it themselves.'],
+    [0.5, 'Python computes every figure over 25 to 30 million rows, and more than 50 checks compare results across Excel, Power BI and Python.'],
+    [0.75, 'If two systems disagree, the run stops. The checks caught nine mismatches.']],
   win: frame('run log  (illustration: the real tool is internal)', `<div class="log" data-log>
     <div class="ln cmd"><span>$ run brand-review</span></div>
     ${logLine(0.2, '', 'plan query, schema-checked', 'ok')}
@@ -41,32 +41,32 @@ const coke = scene({
     ${logLine(0.75, 'last', 'reconcile across systems', '<i class="halt">HALT</i><i class="pass">ok</i>')}
     <div class="ln note" data-at="0.8"><span class="halt">&gt; two systems disagree on one figure. run stopped.</span><span class="pass">&gt; all systems agree. report published.</span></div>
   </div>
-  <div class="try"><span>Try it:</span><button type="button" data-log-mode="halt" aria-pressed="true">One system disagrees</button><button type="button" data-log-mode="pass" aria-pressed="false">All agree</button></div>`, 'dark'),
+  <div class="try" role="group" aria-labelledby="lbl-log"><span id="lbl-log">Show a run where the systems</span><button type="button" data-log-mode="halt" aria-pressed="true">disagree</button><button type="button" data-log-mode="pass" aria-pressed="false">agree</button></div>`),
 });
 
 const dots = Array.from({ length: 100 }, (_, i) => `<i class="${i < 70 ? 'crash' : ''}${i >= 10 && i < 70 ? ' gone' : ''}"></i>`).join('');
 const quad = scene({
-  n: '02', slug: 'quadcore', kicker: 'Quadcore Innovations, 2025 to 2026', len: 3,
-  title: 'Finding the one bug behind 70% of tickets',
-  story: [[0, 'About 100 support tickets kept arriving on a fintech payments platform.'],
-    [0.3, 'I traced about 70% of them to a single crash path.'],
-    [0.6, 'The product lead accepted the fixes. Tickets fell to 40.'],
+  slug: 'quadcore', kicker: 'Quadcore Innovations, Oct 2025 to May 2026', len: 3,
+  title: 'Cutting support tickets at Quadcore',
+  story: [[0, 'The payments platform was getting about 100 support tickets.'],
+    [0.3, 'I traced about 70% of them to one crash path.'],
+    [0.6, 'The product lead accepted the fixes I proposed, and tickets dropped to about 40.'],
     [0.85, 'Resolution time went from 2 to 4 days to 24 hours.']],
   win: frame('support tickets, one dot each', `<div class="tickets" data-tickets>
     <p class="count"><b data-count>~100</b> tickets</p>
     <div class="dots" role="img" aria-label="About 100 tickets, about 70 from one crash path, 40 after the fixes">${dots}</div>
     <p class="key"><span><i class="crash"></i>one crash path</span><span><i></i>everything else</span></p>
   </div>
-  <div class="try"><span>Try it:</span><button type="button" data-fix="off" aria-pressed="true">Before the fix</button><button type="button" data-fix="on" aria-pressed="false">After the fix</button></div>`),
+  <div class="try" role="group" aria-labelledby="lbl-fix"><span id="lbl-fix">Show tickets</span><button type="button" data-fix="off" aria-pressed="true">before the fixes</button><button type="button" data-fix="on" aria-pressed="false">after the fixes</button></div>`),
 });
 
 const kalshi = scene({
-  n: '03', slug: 'kalshi', kicker: 'Independent research, 2026', len: 3.2,
-  title: 'My backtest made 7.7%. I called it luck.',
-  story: [[0, 'I built a model that prices weather markets from day-ahead forecasts.'],
-    [0.3, 'The first paper backtest made 7.7%.'],
-    [0.55, 'Then I scored calibration on 1,216 contested markets. The market won.'],
-    [0.85, 'No real money has been traded. The rule for that has not been met.']],
+  slug: 'kalshi', kicker: 'Independent project, 2026', len: 3.2,
+  title: 'Forecasting weather prediction markets',
+  story: [[0, 'My model turns day-ahead temperature forecasts for 7 U.S. cities into probabilities and compares them with Kalshi prices.'],
+    [0.3, 'The first paper backtest returned 7.7%.'],
+    [0.55, 'On the 1,216 contested markets, the market was better calibrated than my model (Brier 0.2114 vs 0.3047).'],
+    [0.85, 'I have not traded real money. My rule needs a better Brier score than the market on 200+ contested markets and a positive paper return, and neither is true yet.']],
   win: frame('kalshi-weather-engine / notebook', `<div class="nbk">
     <p class="cell" data-at="0.2"><span>In [1]:</span> backtest(paper=True)</p>
     <p class="out big pos" data-at="0.3">+7.7%</p>
@@ -77,9 +77,9 @@ const kalshi = scene({
       <p class="cap">Brier = (forecast &minus; outcome)&sup2;, averaged over markets.</p>
     </div>
   </div>
-  <div class="try col"><span>Try Brier: you say it hits 60&deg;F tomorrow, <output data-p>70</output>% likely.</span>
+  <div class="try col"><span>Your forecast: <output data-p>70</output>% chance of 60&deg;F or warmer</span>
     <input type="range" min="0" max="100" value="70" data-p-in aria-label="Your forecast probability">
-    <span class="row" aria-live="polite">It <button type="button" data-y="1" aria-pressed="true">did</button><button type="button" data-y="0" aria-pressed="false">didn&rsquo;t</button> &rarr; your score is <b data-you-score>0.0900</b></span></div>`),
+    <span class="row" role="group" aria-labelledby="lbl-y" aria-live="polite"><span id="lbl-y">Outcome:</span> <button type="button" data-y="1" aria-pressed="true">it did</button><button type="button" data-y="0" aria-pressed="false">it didn&rsquo;t</button> Your Brier score: <b data-you-score>0.0900</b></span></div>`),
 });
 
 // The real CASE from query 2.4. The template ships in data-tpl so hands-on.js fills the same
@@ -91,18 +91,18 @@ const sqlTemplate = `CASE
 END AS segment`;
 export const sqlFor = (k) => sqlTemplate.replace('{r}', k - 1).replace('{k}', k);
 const retail = scene({
-  n: '04', slug: 'retail-sql', kicker: 'SQL study, 620 orders', len: 3.6,
-  title: 'Who actually pays the bills in an online store',
-  story: [[0, '620 orders over 18 months. Who actually pays the bills?'],
-    [0.25, 'Split the 189 buyers by how often they come back.'],
-    [0.6, 'Loyal customers, four or more orders, are a third of buyers.'],
-    [0.8, 'They bring in 54.4% of the revenue.']],
+  slug: 'retail-sql', kicker: 'SQL project, 2026', len: 3.6,
+  title: 'Segmenting online store customers in SQL',
+  story: [[0, 'A retail database with 620 orders from January 2024 to June 2025.'],
+    [0.25, 'I grouped the 189 buyers by how many orders they placed.'],
+    [0.6, 'Customers with four or more orders are a third of buyers.'],
+    [0.8, 'They account for 54.4% of revenue.']],
   win: frame('ecommerce-sql / query 2.4 (excerpt)', `<pre class="sql" data-type="0.1-0.5" data-sql data-tpl="${esc(sqlTemplate)}">${esc(sqlFor(4))}</pre>
     <table class="res" data-at="0.55" data-seg aria-live="polite"><thead><tr><th>segment</th><th>buyers</th><th>revenue</th></tr></thead>
       <tbody><tr><td>One-time</td><td data-c="b0">19.0%</td><td data-c="r0">7.5%</td></tr>
       <tr><td>Repeat</td><td data-c="b1">47.6%</td><td data-c="r1">38.1%</td></tr>
       <tr class="hi" data-at="0.6"><td data-c="name">Loyal (4+)</td><td data-c="b2">33.3%</td><td data-c="r2">54.4%</td></tr></tbody></table>
-    <div class="try"><span>Try it: loyal means</span><input type="range" min="3" max="7" value="4" data-loyal aria-label="Orders needed to count as loyal" aria-valuetext="4 or more orders"><b data-loyal-out>4+</b><span>orders</span></div>
+    <div class="try"><span>Count as loyal at</span><input type="range" min="3" max="7" value="4" data-loyal aria-label="Orders needed to count as loyal" aria-valuetext="4 or more orders"><b data-loyal-out>4+</b><span>orders</span></div>
     <p class="cap">Buyers with at least one order that was not cancelled or refunded: 189 buyers, 577 orders.</p>
     <script type="application/json" id="order-dist">${JSON.stringify(orderDist)}</script>`),
 });

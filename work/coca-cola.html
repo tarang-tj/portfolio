@@ -3,27 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A three-day request, made self-serve | TJ Jammalamadaka</title>
-<meta name="description" content="Turning a four-person manual pull into a tool about 50 people run themselves.">
-<meta name="color-scheme" content="dark">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&display=swap">
+<title>Replacing a manual data pull at Coca-Cola | TJ Jammalamadaka</title>
+<meta name="description" content="An internal tool that replaced a four-person, three-day manual pull.">
+<meta name="color-scheme" content="light">
 <link rel="stylesheet" href="../styles.css">
 <script>document.documentElement.classList.add('js');setTimeout(()=>{if(!window.revealReady)document.querySelectorAll('.reveal,.stage').forEach((e)=>e.classList.add('in'));if(!window.scenesReady)document.documentElement.classList.add('still')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
-  <a class="me" href="../index.html"><b>TJ Jammalamadaka</b><span>Data analyst</span></a>
-  <nav class="pill" aria-label="Sections"><a href="../index.html#work" data-nav="work">Work</a><a href="../index.html#about" data-nav="about">About</a></nav>
-  <div class="out"><a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:tarangjammalamadaka9@gmail.com">Email</a></div>
+  <a class="me" href="../index.html">TJ Jammalamadaka</a>
+  <nav aria-label="Main"><a href="../index.html#work" data-nav="work">Work</a><a href="../index.html#about" data-nav="about">About</a><a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:tarangjammalamadaka9@gmail.com">Email</a></nav>
 </header>
 <main id="main">
 <article class="cs">
-  <a class="back" href="../index.html#work">&larr; All work</a>
-  <header class="cs-head"><p class="label">The Coca-Cola Company &middot; Summer 2026</p><h1>A three-day request, made self-serve</h1><p class="dim">Turning a four-person manual pull into a tool about 50 people run themselves.</p></header>
-  <div class="stage"><div class="win dark"><div class="win-bar"><i></i><i></i><i></i><span>run log  (illustration)</span></div><div class="win-body"><pre class="log">
+  <a class="back" href="../index.html#work">Back to all work</a>
+  <header class="cs-head"><p class="kicker">The Coca-Cola Company, Summer 2026</p><h1>Replacing a manual data pull at Coca-Cola</h1><p class="dim">An internal tool that replaced a four-person, three-day manual pull.</p></header>
+  <div class="stage"><div class="win "><div class="win-bar"><i></i><i></i><i></i><span>run log  (illustration)</span></div><div class="win-body"><pre class="log">
 <b>$</b> run brand-review
   plan query, schema-checked   <em>ok</em>
   compute 25 to 30M rows       <em>ok</em>
@@ -35,18 +31,18 @@
   <div class="cs-grid">
     <dl class="meta"><dt>My role</dt><dd>AI MarTech Intern, Ignite Program</dd><dt>Context</dt><dd>Global Human Insights, Atlanta</dd><dt>Timeline</dt><dd>May 18 to Aug 14, 2026</dd><dt>Tools</dt><dd>Azure OpenAI, Python, Power BI, Excel</dd></dl>
     <div class="cs-body"><p>A recurring analytical request took a four-person team about three days to pull by hand. I interviewed 10 of the people who relied on it, then built an internal tool to replace the manual pull.</p><p>Azure OpenAI plans the query. Deterministic Python computes every figure over a 25 to 30 million row backend. Model output is schema validated, and more than 50 reconciliation checks run across Excel, Power BI and Python.</p><p>Along the way I traced a recurring discrepancy to the order in which figures were rounded, and wrote the calculation standard the team adopted.</p>
-      <div class="finding"><p class="label">What I found</p><p>When two systems disagree about a number, the tool stops and says so instead of picking one. Those checks caught nine mismatches before anyone saw a wrong figure.</p></div>
+      <h2 class="h-find">What I found</h2><p>If two systems disagree on a number, the tool stops and reports it instead of picking one. The checks caught nine mismatches.</p>
       <table class="figs"><tbody><tr><th scope="row">Manual pull it replaced</th><td>4 people, ~3 days</td></tr><tr><th scope="row">Direct users</th><td>~50</td></tr><tr><th scope="row">Rows in the backend</th><td>25 to 30M</td></tr><tr><th scope="row">Reconciliation checks</th><td>50+</td></tr><tr><th scope="row">Mismatches caught</th><td>9</td></tr><tr><th scope="row">Employees reached by its output</th><td>500+</td></tr></tbody></table>
       <p class="dim small">The tool, its code and its data are internal to the company, so the window above is an illustration of how a run behaves, not a screenshot.</p>
       
     </div>
   </div>
-  <a class="next" href="quadcore.html"><span class="label">Next</span>Finding the one bug behind 70% of tickets &rarr;</a>
+  <p class="next">Next case study: <a href="quadcore.html">Cutting support tickets at Quadcore</a></p>
 </article>
 </main>
 <footer class="foot">
-  <p>Tarang (TJ) Jammalamadaka &middot; Bothell, Washington &middot; <a href="mailto:tarangjammalamadaka9@gmail.com">tarangjammalamadaka9@gmail.com</a> &middot; <a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-  <p>A script checks this site&rsquo;s claims, chart bars and links before it ships: <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">read it</a>.</p>
+  <p>Tarang (TJ) Jammalamadaka, Bothell, Washington. <a href="mailto:tarangjammalamadaka9@gmail.com">tarangjammalamadaka9@gmail.com</a>, <a class="" href="https://linkedin.com/in/tarang-tj/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a class="" href="https://github.com/tarang-tj" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+  <p>A <a class="" href="https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs" target="_blank" rel="noopener noreferrer">script</a> in the repo checks the numbers on this site against their sources.</p>
 </footer>
 <script src="../main.js" defer></script>
 </body>
