@@ -172,5 +172,10 @@ const allTab = home.match(/role="tab" id="all"[^>]*>[^<]*<small>(\d+)<\/small>/)
 if (!allTab || Number(allTab[1]) !== projects.length) fail(`All work tab says ${allTab && allTab[1]}, lanes.mjs has ${projects.length}`);
 for (const must of ['Second place, CED Finance Case Competition']) if (!text.includes(must)) fail(`missing required text: ${must}`);
 
+// Link previews (LinkedIn, Slack) use og:image; without it they scrape the first picture on the page.
+const og = home.match(/<meta property="og:image" content="https:\/\/tarang-tj\.github\.io\/portfolio\/([^"]+)">/);
+if (!og) fail('home page has no og:image preview');
+else if (!existsSync(new URL(og[1], root))) fail(`og:image points at missing file ${og[1]}`);
+
 if (failures.length) { console.error('FAIL\n- ' + failures.join('\n- ')); process.exit(1); }
 console.log(`PASS: ${pages.length} pages, claims, ${bars.length} chart bars, anchors, accessibility${process.argv.includes('--online') ? ', live links' : ''}`);
