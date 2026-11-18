@@ -1,6 +1,7 @@
 // Renders index.html and work/<slug>.html from src/content.mjs. Run: node scripts/build.mjs
 import { writeFileSync, mkdirSync } from 'node:fs';
-import { person as P, proof, cases, builds, experience } from '../src/content.mjs';
+import { person as P, proof, cases, experience } from '../src/content.mjs';
+import { lens, lensLinks } from '../src/lens.mjs';
 import { visual, esc } from '../src/visuals.mjs';
 import { scenes } from '../src/scenes.mjs';
 
@@ -36,34 +37,27 @@ ${body}
   <p>${P.name}, Bothell, Washington. <a href="mailto:${P.email}">${P.email}</a>, ${ext(P.linkedin, 'LinkedIn')}, ${ext(P.github, 'GitHub')}.</p>
   <p>A ${ext('https://github.com/tarang-tj/portfolio/blob/main/scripts/check-site.mjs', 'script')} in the repo checks the numbers on this site against their sources.</p>
 </footer>
-<script src="${base}main.js" defer></script>${base ? '' : ['dots-layouts', 'dots-engine', 'story', 'hands-on'].map((n) => `\n<script src="${n}.js" defer></script>`).join('')}
+<script src="${base}main.js" defer></script>${base ? '' : ['dots-layouts', 'dots-engine', 'story', 'hands-on', 'lens'].map((n) => `\n<script src="${n}.js" defer></script>`).join('')}
 </body>
 </html>
 `;
 }
 
-const tile = (b) => `<article class="tile reveal">
-  ${b.visual ? visual(b.visual) : ''}
-  <h3>${ext(b.url, b.name)}</h3><p>${b.text}</p>${b.code ? `<p class="links">${ext(b.code, 'Code')}</p>` : ''}
-</article>`;
-
 const home = page({
-  title: `${P.short} | Data analyst`,
-  desc: 'Data and business analyst. Case studies from Coca-Cola, Quadcore and independent research. Graduating June 2027.',
+  title: `${P.short} | Analyst: finance, data, supply chain, AI`,
+  desc: 'Analyst portfolio sorted by role: finance, data, supply chain and AI. Coca-Cola, Quadcore and independent research. Graduating June 2027.',
   body: `<section class="hero" data-layout="scatter" data-cap="">
-  <p class="hero-role">Data and business analyst</p>
+  <p class="hero-role">Analyst for finance, data, supply chain and AI teams</p>
   <h1>Tarang (TJ)<br>Jammalamadaka</h1>
   <p class="intro">I&rsquo;m a data and business analyst finishing a degree in Management Information Systems at the University of Washington Bothell. This summer I was an AI MarTech Intern at The Coca-Cola Company. I graduate in June 2027 and I&rsquo;m looking for a full-time analyst role.</p>
+  <p class="jump">See my work for ${lensLinks}</p>
   <ul class="stats">${proof.map(([n, w]) => `<li><b>${n}</b><span>${w}</span></li>`).join('')}</ul>
 </section>
+${lens}
 <section id="work" class="work" data-section="work">
-  <h2 class="sec-title">Four projects, told with their own data</h2>
+  <h2 class="sec-title">Deep dives: four projects told with their own data</h2>
   <p class="sec-sub">Most dots here stand for one real person, ticket, market or buyer from the work. The note under each picture says what one dot is.</p>
   <div class="story">${scenes}</div>
-</section>
-<section class="others" data-layout="none" data-cap="">
-  <h2 class="sec-title">Other projects</h2>
-  <div class="tiles">${builds.map(tile).join('')}</div>
 </section>
 <section id="about" class="about" data-section="about" data-layout="none" data-cap="">
   <h2>About</h2>
@@ -77,7 +71,7 @@ const home = page({
       <h3>Tools</h3>
       <p class="tools">SQL (PostgreSQL, SQL Server), Python (pandas, Streamlit), R, Excel, Power BI and DAX, Tableau, Azure OpenAI, Claude API.</p>
       <h3>Certifications and awards</h3>
-      <ul class="tools"><li>Microsoft Certified: Power BI Data Analyst</li><li>Anthropic: AI Fluency</li><li>First place, CED Finance Case Competition</li><li>14th of 1,983, HackerRank Orchestrate</li></ul>
+      <ul class="tools"><li>Microsoft Certified: Power BI Data Analyst</li><li>Anthropic: AI Fluency</li><li>Second place, CED Finance Case Competition</li><li>14th of 1,983, HackerRank Orchestrate</li></ul>
     </div>
   </div>
 </section>`,

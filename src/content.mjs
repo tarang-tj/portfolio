@@ -93,20 +93,6 @@ export const cases = [
   },
 ];
 
-// Smaller builds: shown as tiles, linking out.
-export const builds = [
-  { name: 'AutoAppli', url: 'https://autoappli.com', img: 'img/autoappli.webp',
-    text: 'A job-search tracker that shows where an application pipeline is leaking. About 400 weekly users.' },
-  { name: 'SyllabusAI', url: 'https://syllabusai.net', img: 'img/syllabusai.webp',
-    text: 'Turns a syllabus into dated calendar deadlines. I built and ran it from March to August 2026, with 1,055 tests.' },
-  { name: 'ragproof', url: 'https://github.com/tarang-tj/ragproof', visual: 'ndcg',
-    text: 'An open-source harness that scores how well a search system finds the right documents, on BEIR SciFact.' },
-  { name: 'Economic Pulse', url: 'https://tarang-tj.github.io/economic-pulse-dashboard/', code: 'https://github.com/tarang-tj/economic-pulse-dashboard',
-    text: 'Seven live indicators from the Federal Reserve’s FRED API in Python and Streamlit, with recessions shaded.' },
-  { name: 'Washington housing', url: 'https://tarang-tj.github.io/wa-housing-homelessness/', code: 'https://github.com/tarang-tj/wa-housing-homelessness',
-    text: 'Nine years of rent, income, vacancy and homelessness data, modeled in R and published in Tableau.' },
-];
-
 export const experience = [
   ['Fall 2026', 'Principal Investigator', 'NASA L’SPACE NPWEE', 'Our concept was chosen from four pitches and hit every milestone.'],
   ['2026 to 2027', 'Treasurer', 'UW Bothell Club Council', 'A $200,000+ annual allocation across 95+ organizations.'],

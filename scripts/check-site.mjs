@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import vm from 'node:vm';
 
 import { cases } from '../src/content.mjs';
+import { lanes, projects } from '../src/lanes.mjs';
 
 const root = new URL('../', import.meta.url);
 const workFiles = readdirSync(new URL('work/', root)).filter((f) => f.endsWith('.html')).sort();
@@ -28,6 +29,8 @@ const banned = [
   [/(?<!Major )GPA: 3\.7/, 'unlabeled GPA (must be "Major GPA: 3.7")'],
   [/SyllabusAI[^<]{0,200}\bpresent\b/i, 'SyllabusAI dated "present" (it ran Mar to Aug 2026)'],
   [/ASUWB|\$4M/, 'retired Treasurer framing'],
+  [/(first|1st) place[^<]{0,40}CED|CED[^<]{0,60}((first|1st) place|winner)|winner[^<]{0,40}CED/i, 'CED placing (it was second place)'],
+  [/\bSAP\b|patent/i, 'banned term (SAP or patent)'],
   [/ARIMA/, 'ARIMA (not in the Economic Pulse repo)'],
   [/ragvet/i, 'old project name'],
   [/\b22(\.0)?%|\b34(\.0)?% of|29\.5%|33,123/, 'ecommerce figure that did not reproduce on a rerun'],
@@ -44,7 +47,7 @@ const plain = text
   .replace(/&#(\d+);?/g, (_, d) => String.fromCodePoint(Number(d)))
   .replace(/&([a-z]+);?/gi, (m, n) => named[n] ?? m);
 const css = readFileSync(new URL('styles.css', root), 'utf8');
-const js = ['main.js', 'dots-layouts.js', 'dots-engine.js', 'story.js', 'hands-on.js'].map(read).join('\n');
+const js = ['main.js', 'dots-layouts.js', 'dots-engine.js', 'story.js', 'hands-on.js', 'lens.js'].map(read).join('\n');
 // One web font, chosen on purpose: every stylesheet link to a font host must be exactly the
 // Schibsted Grotesk css2 URL, and the stock trio from the earlier dark version stays out.
 const FONT_OK = /^https:\/\/fonts\.googleapis\.com\/css2\?family=Schibsted\+Grotesk:[^"&]*&display=swap$/;
@@ -146,6 +149,28 @@ if (process.argv.includes('--online')) {
   }));
   console.log(`checked ${urls.length} external links`);
 }
+
+
+// Recruiter lens: every project names real lanes, every lane has at least 3 projects, and the page
+// carries one tab and one card per lane and project, with tab counts that match the cards.
+const laneIds = new Set(lanes.map((l) => l.id));
+for (const p of projects) {
+  if (!p.lanes.length || p.lanes.some((l) => !laneIds.has(l))) fail(`project ${p.id} has unknown or no lanes: [${p.lanes}]`);
+  if (p.case && !cases.some((c) => c.slug === p.case)) fail(`project ${p.id} points at missing case ${p.case}`);
+}
+for (const l of lanes) {
+  const n = projects.filter((p) => p.lanes.includes(l.id)).length;
+  if (n < 3) fail(`lane ${l.id} has ${n} projects, needs at least 3`);
+  const tab = home.match(new RegExp(`role="tab" id="${l.id}"[^>]*>[^<]*<small>(\\d+)</small>`));
+  if (!tab) fail(`no tab for lane ${l.id}`);
+  else if (Number(tab[1]) !== n) fail(`tab ${l.id} says ${tab[1]} projects, lanes.mjs has ${n}`);
+  const cardsIn = [...home.matchAll(/class="pcard" id="p-[^"]+" data-lanes="([^"]+)"/g)].filter(([, ls]) => ls.split(' ').includes(l.id)).length;
+  if (cardsIn !== n) fail(`page has ${cardsIn} cards in lane ${l.id}, lanes.mjs has ${n}`);
+}
+if ((home.match(/class="pcard"/g) || []).length !== projects.length) fail('card count does not match lanes.mjs');
+const allTab = home.match(/role="tab" id="all"[^>]*>[^<]*<small>(\d+)<\/small>/);
+if (!allTab || Number(allTab[1]) !== projects.length) fail(`All work tab says ${allTab && allTab[1]}, lanes.mjs has ${projects.length}`);
+for (const must of ['Second place, CED Finance Case Competition']) if (!text.includes(must)) fail(`missing required text: ${must}`);
 
 if (failures.length) { console.error('FAIL\n- ' + failures.join('\n- ')); process.exit(1); }
 console.log(`PASS: ${pages.length} pages, claims, ${bars.length} chart bars, anchors, accessibility${process.argv.includes('--online') ? ', live links' : ''}`);

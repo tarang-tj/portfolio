@@ -56,9 +56,6 @@ const visuals = {
       ['Loyal (4+)', 33.3, 100, '33.3%', true], ['', 54.4, 100, '54.4%'],
     ], { gap: 24 })),
 
-  ndcg: () => frame('ragproof / BEIR SciFact', bars('Retrieval quality NDCG@10: dense 0.720, keyword 0.560', [
-    ['Dense retrieval', 0.72, 1, '0.720'], ['Keyword search', 0.56, 1, '0.560', true],
-  ]) + `<p class="cap">NDCG@10, higher is better.</p>`),
 };
 
 export const visual = (name) => visuals[name]();

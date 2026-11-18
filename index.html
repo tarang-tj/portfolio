@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TJ Jammalamadaka | Data analyst</title>
-<meta name="description" content="Data and business analyst. Case studies from Coca-Cola, Quadcore and independent research. Graduating June 2027.">
+<title>TJ Jammalamadaka | Analyst: finance, data, supply chain, AI</title>
+<meta name="description" content="Analyst portfolio sorted by role: finance, data, supply chain and AI. Coca-Cola, Quadcore and independent research. Graduating June 2027.">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,182 @@
 <canvas id="dots" aria-hidden="true"></canvas>
 <main id="main">
 <section class="hero" data-layout="scatter" data-cap="">
-  <p class="hero-role">Data and business analyst</p>
+  <p class="hero-role">Analyst for finance, data, supply chain and AI teams</p>
   <h1>Tarang (TJ)<br>Jammalamadaka</h1>
   <p class="intro">I&rsquo;m a data and business analyst finishing a degree in Management Information Systems at the University of Washington Bothell. This summer I was an AI MarTech Intern at The Coca-Cola Company. I graduate in June 2027 and I&rsquo;m looking for a full-time analyst role.</p>
+  <p class="jump">See my work for <a href="#lens" data-jump="finance" style="--hue:var(--green)">Finance</a><a href="#lens" data-jump="data" style="--hue:var(--blue)">Data</a><a href="#lens" data-jump="supply-chain" style="--hue:var(--gold)">Supply chain</a><a href="#lens" data-jump="ai" style="--hue:var(--red)">AI</a></p>
   <ul class="stats"><li><b>~50</b><span>people used the tool I built at Coca-Cola</span></li><li><b>100 to 40</b><span>support tickets after the fixes I proposed at Quadcore</span></li><li><b>4,433</b><span>weather markets scored by my forecasting model</span></li><li><b>14th of 1,983</b><span>in the HackerRank Orchestrate hackathon</span></li></ul>
 </section>
+<section id="lens" class="lens" data-section="work" data-layout="none" data-cap="">
+  <h2 class="sec-title">Pick the role you are hiring for</h2>
+  <p class="sec-sub">Each tab shows the projects that prove that kind of work. Some projects sit in more than one lane. Every tab has its own link you can share.</p>
+  <div class="tabs" role="tablist" aria-label="Work by role">
+    <button type="button" role="tab" id="all" aria-selected="true" aria-controls="lens-panel" data-lane="all">All work <small>17</small></button>
+    <button type="button" role="tab" id="finance" aria-selected="false" aria-controls="lens-panel" tabindex="-1" data-lane="finance" data-hue="green" style="--hue:var(--green)">Finance <small>6</small></button><button type="button" role="tab" id="data" aria-selected="false" aria-controls="lens-panel" tabindex="-1" data-lane="data" data-hue="blue" style="--hue:var(--blue)">Data <small>9</small></button><button type="button" role="tab" id="supply-chain" aria-selected="false" aria-controls="lens-panel" tabindex="-1" data-lane="supply-chain" data-hue="gold" style="--hue:var(--gold)">Supply chain <small>5</small></button><button type="button" role="tab" id="ai" aria-selected="false" aria-controls="lens-panel" tabindex="-1" data-lane="ai" data-hue="red" style="--hue:var(--red)">AI <small>5</small></button>
+  </div>
+  <p class="sr-only" aria-live="polite" data-lens-status></p>
+  <div id="lens-panel" role="tabpanel" aria-labelledby="all">
+    <div class="lane-intro" data-lane-intro="finance" hidden>
+  <p class="lane-pitch">P&amp;L and variance work, budget review, and controls testing. I check a number against its source before anyone acts on it.</p>
+  <ul class="lane-skills"><li>P&amp;L and variance analysis</li><li>Budget review</li><li>Forecast vs actual</li><li>Controls testing</li><li>Excel modeling</li></ul>
+</div><div class="lane-intro" data-lane-intro="data" hidden>
+  <p class="lane-pitch">SQL and Python analysis that ends in a decision someone can act on, with every figure traceable to its source.</p>
+  <ul class="lane-skills"><li>SQL (PostgreSQL, SQL Server)</li><li>Python and pandas</li><li>Power BI and DAX</li><li>Tableau</li><li>Cohorts and segmentation</li></ul>
+</div><div class="lane-intro" data-lane-intro="supply-chain" hidden>
+  <p class="lane-pitch">Procurement spend, purchase-to-pay controls and demand variability, built on real public data instead of class datasets.</p>
+  <ul class="lane-skills"><li>Supplier spend and concentration</li><li>Three-way match</li><li>Bullwhip and demand variance</li><li>Process mapping</li><li>Production tracking</li></ul>
+</div><div class="lane-intro" data-lane-intro="ai" hidden>
+  <p class="lane-pitch">AI tools people actually use, with the guardrails that keep them honest: the model plans, plain code computes, and checks stop bad runs.</p>
+  <ul class="lane-skills"><li>Azure OpenAI</li><li>Claude API</li><li>Retrieval evaluation</li><li>Agents</li><li>Guardrails and tests</li></ul>
+</div>
+    <div class="pgrid"><article class="pcard" id="p-coca-cola" data-lanes="ai data" data-hue="var(--red)" style="--hue:var(--red)">
+  
+  <p class="p-org">The Coca-Cola Company, summer 2026</p>
+  <h3><a href="work/coca-cola.html">Replacing a manual data pull</a></h3>
+  <p class="p-metric"><b>~50</b><span>people used the tool I built</span></p>
+  <p class="p-line">A four-person, three-day manual pull became an internal tool. Azure OpenAI plans the query, plain Python computes every figure, and 50+ checks stop the run if two systems disagree.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--red)">AI</li><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>Azure OpenAI</li><li>Python</li><li>Power BI</li><li>Excel</li></ul>
+  <p class="links"><a href="work/coca-cola.html">Case study</a></p>
+</article><article class="pcard" id="p-quadcore" data-lanes="data" data-hue="var(--blue)" style="--hue:var(--blue)">
+  
+  <p class="p-org">Quadcore Innovations, 2025 to 2026</p>
+  <h3><a href="work/quadcore.html">Cutting support tickets</a></h3>
+  <p class="p-metric"><b>100 to 40</b><span>support tickets after the fixes I proposed</span></p>
+  <p class="p-line">Traced about 70% of tickets on a payments platform to one crash path. Resolution time went from 2 to 4 days to 24 hours, and weekly reporting moved to automated SQL feeds.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>SQL</li><li>Power BI</li><li>Tableau</li><li>Process mapping</li></ul>
+  <p class="links"><a href="work/quadcore.html">Case study</a></p>
+</article><article class="pcard" id="p-treasurer" data-lanes="finance" data-hue="var(--green)" style="--hue:var(--green)">
+  
+  <p class="p-org">UW Bothell Club Council, 2026 to 2027</p>
+  <h3>Reviewing a $200K+ student budget</h3>
+  <p class="p-metric"><b>nearly 20%</b><span>of funds allocated so far needed a correction I made before approval</span></p>
+  <p class="p-line">As Treasurer I check each club&rsquo;s purchase request against its quote, invoice or cart, line by line, before it goes to a vote. The allocation covers 95+ organizations.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--green)">Finance</li><li>Budget review</li><li>Excel</li><li>Funding policy</li></ul>
+  <p class="links"></p>
+</article><article class="pcard" id="p-cartier" data-lanes="finance" data-hue="var(--green)" style="--hue:var(--green)">
+  
+  <p class="p-org">Team Cartier, team project</p>
+  <h3>Forecast vs actual P&amp;L</h3>
+  <p class="p-metric"><b>25+</b><span>expense categories broken out</span></p>
+  <p class="p-line">A FY2024 wholesale-distribution P&amp;L: forecast vs actual by channel, budget variance and working capital. I built the P&amp;L waterfall and broke out the expense categories. Figures are the case dataset.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--green)">Finance</li><li>Excel</li><li>Chart.js</li><li>Variance analysis</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/team-cartier-dashboard/" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
+</article><article class="pcard" id="p-aero-spend" data-lanes="supply-chain finance data" data-hue="var(--gold)" style="--hue:var(--gold)">
+  
+  <p class="p-org">Independent research, 2026</p>
+  <h3>Who really gets aerospace contract dollars</h3>
+  <p class="p-metric"><b>$499.4B</b><span>of DoD aerospace spend, FY2021 to 2025</span></p>
+  <p class="p-line">Every NASA contract transaction plus DoD aerospace manufacturing (NAICS 3364) from USAspending, rolled up to parent companies. Lockheed Martin&rsquo;s share goes from 21% as listed to 43% rolled up, and 87% of DoD aerospace dollars were not competed.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--gold)">Supply chain</li><li class="lane-tag" style="--hue:var(--green)">Finance</li><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>Python</li><li>DuckDB</li><li>SQL</li><li>USAspending API</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/aero-supplier-spend/" target="_blank" rel="noopener noreferrer">Live findings</a><a href="https://github.com/tarang-tj/aero-supplier-spend" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-p2p" data-lanes="supply-chain finance" data-hue="var(--gold)" style="--hue:var(--gold)">
+  
+  <p class="p-org">Independent research, 2026</p>
+  <h3>Three-way match audit of a real ERP log</h3>
+  <p class="p-metric"><b>3,693</b><span>PO items invoiced before the PO existed</span></p>
+  <p class="p-line">Fourteen purchase-to-pay controls run on a public log of 251,734 PO items. 1.47% of items had an invoice dated before the PO, and 2,526 had one person both record and clear the same invoice.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--gold)">Supply chain</li><li class="lane-tag" style="--hue:var(--green)">Finance</li><li>Python</li><li>pandas</li><li>Process mining</li><li>Audit controls</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/p2p-match-audit/" target="_blank" rel="noopener noreferrer">Run the audit</a><a href="https://github.com/tarang-tj/p2p-match-audit" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-bullwhip" data-lanes="supply-chain data" data-hue="var(--gold)" style="--hue:var(--gold)">
+  
+  <p class="p-org">Independent research, 2026</p>
+  <h3>Testing the bullwhip effect</h3>
+  <p class="p-metric"><b>44</b><span>industries tested on Census data through 2025</span></p>
+  <p class="p-line">A replication of a well-known bullwhip study. With seasonality kept, no retail industry amplifies demand. Remove seasonality and 82% of retail cells appear to, so the method can manufacture the effect.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--gold)">Supply chain</li><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>Python</li><li>Census data</li><li>Bootstrap tests</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/bullwhip-audit/" target="_blank" rel="noopener noreferrer">Memo and charts</a><a href="https://github.com/tarang-tj/bullwhip-audit" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-first-flight" data-lanes="supply-chain data" data-hue="var(--gold)" style="--hue:var(--gold)">
+  
+  <p class="p-org">Independent build, 2026</p>
+  <h3>Seeing Boeing&rsquo;s production rate from the sky</h3>
+  <p class="p-metric"><b>624 of 774</b><span>737 deliveries seen as first flights</span></p>
+  <p class="p-line">A 3D Puget Sound where every new Boeing jet&rsquo;s first flight replays from public flight-tracking history, with a ledger that compares the sky count with Boeing&rsquo;s reported deliveries over 647 days.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--gold)">Supply chain</li><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>Python</li><li>three.js</li><li>ADS-B data</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/first-flight/" target="_blank" rel="noopener noreferrer">Explore it</a><a href="https://github.com/tarang-tj/first-flight" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-overhead" data-lanes="supply-chain" data-hue="var(--gold)" style="--hue:var(--gold)">
+  
+  <p class="p-org">Independent build, 2026</p>
+  <h3>Satellites as a supply chain</h3>
+  <p class="p-metric"><b>16,896</b><span>active satellites in the feed at last check</span></p>
+  <p class="p-line">Every active satellite over you, with Amazon Leo and Starlink shown as a production line: factory, launch, orbit raising, on station, retired. Both factories are a short drive from campus.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--gold)">Supply chain</li><li>JavaScript</li><li>three.js</li><li>CelesTrak data</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/overhead/" target="_blank" rel="noopener noreferrer">Look up</a><a href="https://github.com/tarang-tj/overhead" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-kalshi" data-lanes="data finance" data-hue="var(--blue)" style="--hue:var(--blue)">
+  
+  <p class="p-org">Independent research, 2026</p>
+  <h3><a href="work/kalshi.html">Forecasting weather prediction markets</a></h3>
+  <p class="p-metric"><b>4,433</b><span>settled markets scored</span></p>
+  <p class="p-line">A temperature model scored against Kalshi prices. The market was better calibrated (Brier 0.2114 vs my 0.3047), so I did not trade real money on it.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--blue)">Data</li><li class="lane-tag" style="--hue:var(--green)">Finance</li><li>Python</li><li>pandas</li><li>Calibration</li></ul>
+  <p class="links"><a href="work/kalshi.html">Case study</a></p>
+</article><article class="pcard" id="p-retail-sql" data-lanes="data" data-hue="var(--blue)" style="--hue:var(--blue)">
+  
+  <p class="p-org">SQL study, 2026</p>
+  <h3><a href="work/retail-sql.html">Segmenting store customers in SQL</a></h3>
+  <p class="p-metric"><b>54.4%</b><span>of revenue from a third of buyers</span></p>
+  <p class="p-line">Cohort and window-function queries on a six-table retail schema with 620 orders. Customers with four or more orders are 33.3% of buyers.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>PostgreSQL</li><li>Window functions</li><li>Cohorts</li></ul>
+  <p class="links"><a href="work/retail-sql.html">Case study</a></p>
+</article><article class="pcard" id="p-econ-pulse" data-lanes="finance data" data-hue="var(--green)" style="--hue:var(--green)">
+  
+  <p class="p-org">Independent build</p>
+  <h3>Economic Pulse dashboard</h3>
+  <p class="p-metric"><b>7</b><span>live indicators from FRED</span></p>
+  <p class="p-line">Seven live indicators from the Federal Reserve&rsquo;s FRED API in Python and Streamlit, with recessions shaded.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--green)">Finance</li><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>Python</li><li>Streamlit</li><li>FRED API</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/economic-pulse-dashboard/" target="_blank" rel="noopener noreferrer">Dashboard</a><a href="https://github.com/tarang-tj/economic-pulse-dashboard" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-wa-housing" data-lanes="data" data-hue="var(--blue)" style="--hue:var(--blue)">
+  
+  <p class="p-org">Independent study</p>
+  <h3>Washington housing and homelessness</h3>
+  <p class="p-metric"><b>9</b><span>years of rent, income and vacancy data</span></p>
+  <p class="p-line">Nine years of rent, income, vacancy and homelessness data, modeled in R and published in Tableau.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--blue)">Data</li><li>R</li><li>Tableau</li></ul>
+  <p class="links"><a href="https://tarang-tj.github.io/wa-housing-homelessness/" target="_blank" rel="noopener noreferrer">Report</a><a href="https://github.com/tarang-tj/wa-housing-homelessness" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-ragproof" data-lanes="ai" data-hue="var(--red)" style="--hue:var(--red)">
+  
+  <p class="p-org">Open source</p>
+  <h3>ragproof</h3>
+  <p class="p-metric"><b>BEIR</b><span>SciFact benchmark harness</span></p>
+  <p class="p-line">An open-source harness that scores how well a search system finds the right documents.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--red)">AI</li><li>Python</li><li>Retrieval evaluation</li></ul>
+  <p class="links"><a href="https://github.com/tarang-tj/ragproof" target="_blank" rel="noopener noreferrer">Code</a></p>
+</article><article class="pcard" id="p-autoappli" data-lanes="ai" data-hue="var(--red)" style="--hue:var(--red)">
+  <img src="img/autoappli.webp" alt="Screenshot of AutoAppli" loading="lazy">
+  <p class="p-org">Product I built</p>
+  <h3>AutoAppli</h3>
+  <p class="p-metric"><b>~400</b><span>weekly users</span></p>
+  <p class="p-line">A job-search tracker that shows where an application pipeline is leaking.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--red)">AI</li><li>Next.js</li><li>TypeScript</li><li>Claude API</li></ul>
+  <p class="links"><a href="https://autoappli.com" target="_blank" rel="noopener noreferrer">Site</a></p>
+</article><article class="pcard" id="p-syllabusai" data-lanes="ai" data-hue="var(--red)" style="--hue:var(--red)">
+  <img src="img/syllabusai.webp" alt="Screenshot of SyllabusAI" loading="lazy">
+  <p class="p-org">Product I ran, Mar to Aug 2026</p>
+  <h3>SyllabusAI</h3>
+  <p class="p-metric"><b>1,055</b><span>automated tests</span></p>
+  <p class="p-line">Turned a syllabus into dated calendar deadlines. I built and ran it from March to August 2026.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--red)">AI</li><li>Node</li><li>Supabase</li><li>Claude API</li></ul>
+  <p class="links"><a href="https://syllabusai.net" target="_blank" rel="noopener noreferrer">Site</a></p>
+</article><article class="pcard" id="p-ptcg" data-lanes="ai" data-hue="var(--red)" style="--hue:var(--red)">
+  
+  <p class="p-org">Kaggle simulation competition, 2026</p>
+  <h3>A card-game playing agent</h3>
+  <p class="p-metric"><b>245th of 6,807</b><span>final rank, top 3.6%</span></p>
+  <p class="p-line">An agent that plays the Pok&eacute;mon Trading Card Game, ranked on a ladder against thousands of other entrants&rsquo; agents.</p>
+  <ul class="p-tags"><li class="lane-tag" style="--hue:var(--red)">AI</li><li>Agents</li><li>Simulation</li></ul>
+  <p class="links"></p>
+</article></div>
+  </div>
+  <details class="pmap" open>
+    <summary>Where each project sits</summary>
+    <div class="pmap-wrap"><table>
+      <thead><tr><th scope="col">Project</th><th scope="col" data-col="finance">Finance</th><th scope="col" data-col="data">Data</th><th scope="col" data-col="supply-chain">Supply chain</th><th scope="col" data-col="ai">AI</th></tr></thead>
+      <tbody><tr data-lanes="ai data"><th scope="row"><a href="#p-coca-cola">Replacing a manual data pull</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"><span class="dot" style="--hue:var(--red)" role="img" aria-label="AI"></span></td></tr><tr data-lanes="data"><th scope="row"><a href="#p-quadcore">Cutting support tickets</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="finance"><th scope="row"><a href="#p-treasurer">Reviewing a $200K+ student budget</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="finance"><th scope="row"><a href="#p-cartier">Forecast vs actual P&amp;L</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="supply-chain finance data"><th scope="row"><a href="#p-aero-spend">Who really gets aerospace contract dollars</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"><span class="dot" style="--hue:var(--gold)" role="img" aria-label="Supply chain"></span></td><td data-col="ai"></td></tr><tr data-lanes="supply-chain finance"><th scope="row"><a href="#p-p2p">Three-way match audit of a real ERP log</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"></td><td data-col="supply-chain"><span class="dot" style="--hue:var(--gold)" role="img" aria-label="Supply chain"></span></td><td data-col="ai"></td></tr><tr data-lanes="supply-chain data"><th scope="row"><a href="#p-bullwhip">Testing the bullwhip effect</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"><span class="dot" style="--hue:var(--gold)" role="img" aria-label="Supply chain"></span></td><td data-col="ai"></td></tr><tr data-lanes="supply-chain data"><th scope="row"><a href="#p-first-flight">Seeing Boeing&rsquo;s production rate from the sky</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"><span class="dot" style="--hue:var(--gold)" role="img" aria-label="Supply chain"></span></td><td data-col="ai"></td></tr><tr data-lanes="supply-chain"><th scope="row"><a href="#p-overhead">Satellites as a supply chain</a></th><td data-col="finance"></td><td data-col="data"></td><td data-col="supply-chain"><span class="dot" style="--hue:var(--gold)" role="img" aria-label="Supply chain"></span></td><td data-col="ai"></td></tr><tr data-lanes="data finance"><th scope="row"><a href="#p-kalshi">Forecasting weather prediction markets</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="data"><th scope="row"><a href="#p-retail-sql">Segmenting store customers in SQL</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="finance data"><th scope="row"><a href="#p-econ-pulse">Economic Pulse dashboard</a></th><td data-col="finance"><span class="dot" style="--hue:var(--green)" role="img" aria-label="Finance"></span></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="data"><th scope="row"><a href="#p-wa-housing">Washington housing and homelessness</a></th><td data-col="finance"></td><td data-col="data"><span class="dot" style="--hue:var(--blue)" role="img" aria-label="Data"></span></td><td data-col="supply-chain"></td><td data-col="ai"></td></tr><tr data-lanes="ai"><th scope="row"><a href="#p-ragproof">ragproof</a></th><td data-col="finance"></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"><span class="dot" style="--hue:var(--red)" role="img" aria-label="AI"></span></td></tr><tr data-lanes="ai"><th scope="row"><a href="#p-autoappli">AutoAppli</a></th><td data-col="finance"></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"><span class="dot" style="--hue:var(--red)" role="img" aria-label="AI"></span></td></tr><tr data-lanes="ai"><th scope="row"><a href="#p-syllabusai">SyllabusAI</a></th><td data-col="finance"></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"><span class="dot" style="--hue:var(--red)" role="img" aria-label="AI"></span></td></tr><tr data-lanes="ai"><th scope="row"><a href="#p-ptcg">A card-game playing agent</a></th><td data-col="finance"></td><td data-col="data"></td><td data-col="supply-chain"></td><td data-col="ai"><span class="dot" style="--hue:var(--red)" role="img" aria-label="AI"></span></td></tr></tbody>
+    </table></div>
+  </details>
+</section>
 <section id="work" class="work" data-section="work">
-  <h2 class="sec-title">Four projects, told with their own data</h2>
+  <h2 class="sec-title">Deep dives: four projects told with their own data</h2>
   <p class="sec-sub">Most dots here stand for one real person, ticket, market or buyer from the work. The note under each picture says what one dot is.</p>
   <div class="story"><section class="chapter" data-scene style="--hue:var(--red)" aria-labelledby="c-coca-cola">
   <header class="ch-head"><p class="ch-org">The Coca-Cola Company, summer 2026</p><h2 id="c-coca-cola"><a href="work/coca-cola.html">Replacing a three-day manual pull</a></h2></header>
@@ -95,25 +264,6 @@ END AS segment</pre></div></div></div>
 <script type="application/json" id="order-dist">[[1,36,7619.1],[2,53,17490.86],[3,37,21338.6],[4,25,18476.17],[5,17,15155.47],[6,12,11805.77],[7,6,6117.86],[8,2,3050.78],[9,1,906.15]]</script>
 <script type="application/json" id="dot-counts">{"team":[4,"coke-team"],"users":[50,"coke-users"],"mismatches":[9,"coke-checks"],"tickets":[100,"quad-100"],"crash":[70,"quad-70"],"after":[40,"quad-40"],"markets":[4433,"kal-all"],"contested":[1216,"kal-contested"],"brierMarket":[0.2114,"kal-brier"],"brierModel":[0.3047,"kal-brier"],"buyers":[189,"ret-buyers"],"oneTime":[36,"ret-groups"],"repeat":[90,"ret-groups"],"loyal":[63,"ret-groups"]}</script></div>
 </section>
-<section class="others" data-layout="none" data-cap="">
-  <h2 class="sec-title">Other projects</h2>
-  <div class="tiles"><article class="tile reveal">
-  
-  <h3><a class="" href="https://autoappli.com" target="_blank" rel="noopener noreferrer">AutoAppli</a></h3><p>A job-search tracker that shows where an application pipeline is leaking. About 400 weekly users.</p>
-</article><article class="tile reveal">
-  
-  <h3><a class="" href="https://syllabusai.net" target="_blank" rel="noopener noreferrer">SyllabusAI</a></h3><p>Turns a syllabus into dated calendar deadlines. I built and ran it from March to August 2026, with 1,055 tests.</p>
-</article><article class="tile reveal">
-  <div class="win "><div class="win-bar"><i></i><i></i><i></i><span>ragproof / BEIR SciFact</span></div><div class="win-body"><svg class="chart" viewBox="0 0 400 76" role="img" aria-label="Retrieval quality NDCG@10: dense 0.720, keyword 0.560"><text class="t" x="0" y="23">Dense retrieval</text><rect class="bar" x="120" y="11" data-value="0.72" data-max="1" data-shown="0.720" height="16" width="158"/><text class="v" x="286" y="23">0.720</text><text class="t" x="0" y="57">Keyword search</text><rect class="bar alt" x="120" y="45" data-value="0.56" data-max="1" data-shown="0.560" height="16" width="123"/><text class="v" x="251" y="57">0.560</text></svg><p class="cap">NDCG@10, higher is better.</p></div></div>
-  <h3><a class="" href="https://github.com/tarang-tj/ragproof" target="_blank" rel="noopener noreferrer">ragproof</a></h3><p>An open-source harness that scores how well a search system finds the right documents, on BEIR SciFact.</p>
-</article><article class="tile reveal">
-  
-  <h3><a class="" href="https://tarang-tj.github.io/economic-pulse-dashboard/" target="_blank" rel="noopener noreferrer">Economic Pulse</a></h3><p>Seven live indicators from the Federal Reserve’s FRED API in Python and Streamlit, with recessions shaded.</p><p class="links"><a class="" href="https://github.com/tarang-tj/economic-pulse-dashboard" target="_blank" rel="noopener noreferrer">Code</a></p>
-</article><article class="tile reveal">
-  
-  <h3><a class="" href="https://tarang-tj.github.io/wa-housing-homelessness/" target="_blank" rel="noopener noreferrer">Washington housing</a></h3><p>Nine years of rent, income, vacancy and homelessness data, modeled in R and published in Tableau.</p><p class="links"><a class="" href="https://github.com/tarang-tj/wa-housing-homelessness" target="_blank" rel="noopener noreferrer">Code</a></p>
-</article></div>
-</section>
 <section id="about" class="about" data-section="about" data-layout="none" data-cap="">
   <h2>About</h2>
   <div class="about-grid">
@@ -126,7 +276,7 @@ END AS segment</pre></div></div></div>
       <h3>Tools</h3>
       <p class="tools">SQL (PostgreSQL, SQL Server), Python (pandas, Streamlit), R, Excel, Power BI and DAX, Tableau, Azure OpenAI, Claude API.</p>
       <h3>Certifications and awards</h3>
-      <ul class="tools"><li>Microsoft Certified: Power BI Data Analyst</li><li>Anthropic: AI Fluency</li><li>First place, CED Finance Case Competition</li><li>14th of 1,983, HackerRank Orchestrate</li></ul>
+      <ul class="tools"><li>Microsoft Certified: Power BI Data Analyst</li><li>Anthropic: AI Fluency</li><li>Second place, CED Finance Case Competition</li><li>14th of 1,983, HackerRank Orchestrate</li></ul>
     </div>
   </div>
 </section>
@@ -140,5 +290,6 @@ END AS segment</pre></div></div></div>
 <script src="dots-engine.js" defer></script>
 <script src="story.js" defer></script>
 <script src="hands-on.js" defer></script>
+<script src="lens.js" defer></script>
 </body>
 </html>

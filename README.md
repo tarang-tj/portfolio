@@ -15,6 +15,7 @@ Every figure and line of copy lives once in `src/content.mjs`. `src/scenes.mjs` 
 - `dots-layouts.js` computes where the dots go for each step, from the `#dot-counts` and `#order-dist` blocks the build writes into the page.
 - `dots-engine.js` draws them on one fixed canvas and tweens between layouts. It only runs frames while a tween is in progress.
 - `story.js` finds the step in the middle of the screen and tells the engine which layout to show.
+- `lens.js` runs the role tabs (Finance, Data, Supply chain, AI) built from `src/lanes.mjs` by `src/lens.mjs`. A link to `#finance`, `#data`, `#supply-chain` or `#ai` opens that tab, so each lane can be shared on its own.
 - `hands-on.js` wires the controls: the run-log toggle, tickets before and after the fixes, a Brier score calculator, and a loyalty slider that regroups the dots from the real per-customer order counts.
 
 With reduced motion on, the dots jump straight to each layout. Without JavaScript the canvas is hidden and every step still reads as text. The build writes `index.html` and `work/<slug>.html`; commit the output, and Pages serves it as is.
