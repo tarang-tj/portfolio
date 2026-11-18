@@ -173,7 +173,7 @@ if (!allTab || Number(allTab[1]) !== projects.length) fail(`All work tab says ${
 for (const must of ['Second place, CED Finance Case Competition']) if (!text.includes(must)) fail(`missing required text: ${must}`);
 
 // Link previews (LinkedIn, Slack) use og:image; without it they scrape the first picture on the page.
-const og = home.match(/<meta property="og:image" content="https:\/\/tarang-tj\.github\.io\/portfolio\/([^"]+)">/);
+const og = home.match(/<meta property="og:image" content="https:\/\/tarangj\.com\/portfolio\/([^"]+)">/);
 if (!og) fail('home page has no og:image preview');
 else if (!existsSync(new URL(og[1], root))) fail(`og:image points at missing file ${og[1]}`);
 

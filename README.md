@@ -1,6 +1,6 @@
 # TJ Jammalamadaka, analyst portfolio
 
-Live: https://tarang-tj.github.io/portfolio/
+Live: https://tarangj.com/portfolio/
 
 A static portfolio for data, business and product analyst roles, built as a data story. One field of dots runs down the home page: scattered behind the name in the hero, then rearranged into each project's real data as you scroll (people, support tickets, prediction markets, buyers). Plain HTML, CSS and a few small scripts, served by GitHub Pages.
 

@@ -21,8 +21,8 @@ function page({ title, desc, base = '', body }) {
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:url" content="https://tarang-tj.github.io/portfolio/">
-<meta property="og:image" content="https://tarang-tj.github.io/portfolio/img/og.png">
+<meta property="og:url" content="https://tarangj.com/portfolio/">
+<meta property="og:image" content="https://tarangj.com/portfolio/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
