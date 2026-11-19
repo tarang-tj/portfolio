@@ -31,7 +31,7 @@ export const projects = [
     metric: ['nearly 20%', 'of funds allocated so far needed a correction I made before approval'],
     line: 'As Treasurer I check each club&rsquo;s purchase request against its quote, invoice or cart, line by line, before it goes to a vote. The allocation covers 95+ organizations.',
     tools: ['Budget review', 'Excel', 'Funding policy'] },
-  { id: 'plan-went', title: 'Where the plan went', org: 'Independent research, 2026', lanes: ['finance', 'data'],
+  { id: 'plan-went', title: 'Defense Finance Model on Databricks', org: 'Independent research, 2026', lanes: ['finance', 'data'],
     metric: ['98%+', 'of each large profit miss covered by disclosed program charges'],
     line: 'Plan, forecast and actual for Lockheed, Northrop, RTX and L3Harris, rebuilt from 299 SEC filings as a planning cube on Databricks. In the four years segment profit missed plan by more than $300M, losses tied to named programs covered at least 98% of each miss, and the outlook never came down before the charge was booked.',
     tools: ['Databricks', 'SQL', 'Python', 'Excel'],
